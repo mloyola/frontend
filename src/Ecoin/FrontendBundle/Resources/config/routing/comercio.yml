@@ -1,0 +1,63 @@
+comercio_login:
+    pattern:  /login
+    defaults: { _controller: "FrontendBundle:Comercio:login" }
+
+comercio_login_check:
+    pattern:   /login_check
+
+comercio_logout:
+    pattern:   /logout  
+
+comercio_show:
+    pattern:  /show
+    defaults: { _controller: "FrontendBundle:Comercio:show" }
+
+comercio_active:
+    pattern:  /{id}/active
+    defaults: { _controller: "FrontendBundle:Comercio:active" }
+
+comercio_create:
+    pattern:  /create
+    defaults: { _controller: "FrontendBundle:Comercio:create" }
+    requirements: { _method: post }
+
+comercio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FrontendBundle:Comercio:edit" }
+
+comercio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FrontendBundle:Comercio:update" }
+    requirements: { _method: post|put }
+
+comercio_registro:
+    pattern:  /register
+    defaults: { _controller: "FrontendBundle:Comercio:registro" }
+
+comercio_main:
+    pattern:  /main
+    defaults: { _controller: "FrontendBundle:Comercio:main" }
+
+comercio_forgot:
+    pattern:  /forgot
+    defaults: { _controller: "FrontendBundle:Comercio:forgot" }    
+
+comercio_change_pass:
+    pattern:  /{id}/changepass
+    defaults: { _controller: "FrontendBundle:Comercio:changepass" }    
+
+comercio_notificacion:
+    pattern:  /{id}/notification
+    defaults: { _controller: "FrontendBundle:Comercio:notificacion" }
+
+frontend_comerciocta:
+    resource: "@FrontendBundle/Resources/config/routing/comerciocta.yml"
+    prefix:   /comerciocta
+
+frontend_local:
+    resource: "@FrontendBundle/Resources/config/routing/local.yml"
+    prefix:   /local
+
+frontend_comerciohor:
+    resource: "@FrontendBundle/Resources/config/routing/comerciohor.yml"
+    prefix:   /horario    

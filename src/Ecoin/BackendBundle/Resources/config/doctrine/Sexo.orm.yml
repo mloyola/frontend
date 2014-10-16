@@ -1,0 +1,14 @@
+Ecoin\BackendBundle\Entity\Sexo:
+    type: entity
+    table: sexo
+    repositoryClass: Ecoin\BackendBundle\Entity\SexoRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

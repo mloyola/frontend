@@ -1,0 +1,55 @@
+Ecoin\BackendBundle\Entity\Procesador:
+    type: entity
+    table: procesador
+    repositoryClass: Ecoin\BackendBundle\Entity\ProcesadorRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: '50'
+    manyToOne:
+        pais:
+            targetEntity: Pais
+            inversedBy: paises
+            joinColumn:
+                name: pais_id
+                referencedColumnName: id       
+    manyToMany:
+        metodos:
+            targetEntity: Metodo
+            inversedBy: procesadores
+            joinTable:
+                name: procesadores_metodos
+                joinColumns:
+                    procesador_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    metodo_id:
+                        referencedColumnName: id                                
+        monedas:
+            targetEntity: Moneda
+            inversedBy: procesadores
+            joinTable:
+                name: procesadores_monedas
+                joinColumns:
+                    procesador_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    moneda_id:
+                        referencedColumnName: id                                                
+        productos:
+            targetEntity: Producto
+            inversedBy: procesadores
+            joinTable:
+                name: procesadores_productos_2p
+                joinColumns:
+                    procesador_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    producto_id:
+                        referencedColumnName: id                                                                
+    lifecycleCallbacks: {  }

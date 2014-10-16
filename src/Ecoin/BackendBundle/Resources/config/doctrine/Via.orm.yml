@@ -1,0 +1,14 @@
+Ecoin\BackendBundle\Entity\Via:
+    type: entity
+    table: via
+    repositoryClass: Ecoin\BackendBundle\Entity\ViaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        descripcion:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

@@ -1,0 +1,21 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}
+    ACCESO DENEGADO
+{% endblock %}                        
+
+{% block jumbotron %}
+  
+{% endblock %}      
+
+{% block contenido %}
+  
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">                 
+    <h2><span class="icon32 icon-color icon-cross"></span> DENEGADO</h2>
+    <div>
+    <p>Su usuario no tiene permiso para acceder al contenido o para ejecutar la acción.</p>
+    <a href="javascript:history.back(-1);" class="btn btn-primary">Regresar</a>	
+    </div>    
+  </div>
+
+{% endblock %}

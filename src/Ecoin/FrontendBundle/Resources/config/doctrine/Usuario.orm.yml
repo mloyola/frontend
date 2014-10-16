@@ -1,0 +1,86 @@
+Ecoin\FrontendBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    repositoryClass: Ecoin\FrontendBundle\Entity\UsuarioRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+        apellido:
+            type: string
+            length: 255    
+        numdoc:
+            type: string
+            length: 10    
+        usuario:
+            type: string
+            length: 255    
+        password:
+            type: string
+            length: 255              
+        foto:
+            type: string
+            length: 255            
+        fchNac:
+            type: date
+            column: fch_nac
+        marketing:
+            type: boolean    
+        fchCreate:
+            type: datetime
+            column: fch_create
+        fchUpdate:
+            type: datetime
+            column: fch_update        
+        estado:
+            type: string
+            length: 1    
+        salt:
+            type: string
+            length: 255    
+        fchActive:
+            type: datetime
+            column: fch_active    
+    manyToOne:
+        pais:
+            targetEntity: Ecoin\BackendBundle\Entity\Pais
+            inversedBy: usuarios
+            joinColumn:
+                name: pais_id
+                referencedColumnName: id             
+        ciudad:
+            targetEntity: Ecoin\BackendBundle\Entity\Ciudad
+            inversedBy: usuarios
+            joinColumn:
+                name: ciudad_id
+                referencedColumnName: id                                
+        distrito:
+            targetEntity: Ecoin\BackendBundle\Entity\Distrito
+            inversedBy: usuarios
+            joinColumn:
+                name: distrito_id
+                referencedColumnName: id         
+        sexo:
+            targetEntity: Ecoin\BackendBundle\Entity\Sexo
+            inversedBy: usuarios
+            joinColumn:
+                name: sexo_id
+                referencedColumnName: id        
+        idioma:
+            targetEntity: Ecoin\BackendBundle\Entity\Idioma
+            inversedBy: usuarios
+            joinColumn:
+                name: idioma_id
+                referencedColumnName: id      
+        tipodoc:
+            targetEntity: Ecoin\BackendBundle\Entity\Tipodoc
+            inversedBy: usuarios
+            joinColumn:
+                name: tipodoc_id
+                referencedColumnName: id           
+    lifecycleCallbacks: {  }

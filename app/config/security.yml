@@ -1,0 +1,47 @@
+security:
+    firewalls:
+        secured_area_usuario:
+            pattern:    ^/(es|en|it|pt)/usr/*
+            provider:       usuarios
+            anonymous:  ~
+            form_login:
+                login_path: usuario_login
+                check_path: usuario_login_check
+                default_target_path: usuario_main
+            logout:
+                path:  usuario_logout
+                target: frontend_homepage
+        secured_area_comercio:
+            pattern:    ^/(es|en|it|pt)/cia/*
+            provider:       negocios
+            anonymous:  ~
+            form_login:
+                login_path: comercio_login
+                check_path: comercio_login_check
+                default_target_path: comercio_main
+            logout:
+                path:  comercio_logout
+                target: frontend_homepage
+
+    access_control:        
+        - { path: ^/(es|en|it|pt)/usr/(login|logout|login_check|register|create|show|forgot), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(es|en|it|pt)/cia/(login|logout|login_check|register|create|show|forgot), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(es|en|it|pt)/usr/*, roles: ROLE_USER }
+        - { path: ^/(es|en|it|pt)/usr/card/*, roles: ROLE_USER }        
+        - { path: ^/(es|en|it|pt)/cia/*, roles: ROLE_NEGO }
+
+    access_denied_url: /denegado
+
+    providers:               
+        usuarios:
+            entity: { class: Ecoin\FrontendBundle\Entity\Usuario, property: usuario }
+        negocios:
+            entity: { class: Ecoin\FrontendBundle\Entity\Comercio, property: usuario }
+
+    encoders:
+        Ecoin\FrontendBundle\Entity\Usuario: {algorithm: sha1, iterations: 10}
+        Ecoin\FrontendBundle\Entity\Comercio: {algorithm: sha1, iterations: 10}
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:        
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]

@@ -1,0 +1,110 @@
+{% extends '::frontend_cia.html.twig' %}
+
+{% block title %}
+    {{ 'Mis cuentas de pago'|trans({},lenguaje) }} - {{ 'Nuevo'|trans({},lenguaje) }}
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('comerciocta', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comerciocta', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comerciocta', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comerciocta', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block javascripts %}
+    
+{% endblock %}
+
+{% block activelugar %} {% endblock %}
+{% block activepago %} in {% endblock %}
+{% block activecuenta %} {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+     {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-list-alt text-info"></span>
+        {{ 'Mis cuentas de pago'|trans({},lenguaje) }} / <span class="glyphicon glyphicon-pencil"></span>{{ 'Nuevo'|trans({},lenguaje) }}
+      </div>
+
+      <div class="panel-body">    
+		<br>
+       
+        {{ form_start(form, {'attr': {'role': 'form'}}) }}
+     
+        {{ form_errors(form) }} 
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">              
+          {% if form_errors(form.banco) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.banco) }}</div>   
+          {% endif %}          
+          <label>{{ 'Banco'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.banco, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">              
+          {% if form_errors(form.tipocta) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.tipocta) }}</div>   
+          {% endif %}          
+          <label>{{ 'Tipo de Cta.'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.tipocta, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">              
+          {% if form_errors(form.numero) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.numero) }}</div>   
+          {% endif %}          
+          <label>{{ 'N° de Cta.'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.numero, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">              
+          {% if form_errors(form.moneda) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.moneda) }}</div>   
+          {% endif %}          
+          <label>{{ 'Moneda'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.moneda, {'attr': {'class': 'form-control'}}) }}
+        </div>        
+
+        <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">                              
+            <a href="{{ path('comerciocta') }}" class="btn btn-primary btn-md btn-block" title="{{ 'Regresar'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-th-list"></span>{{ 'Listado'|trans({},lenguaje) }}</a>
+          </div>
+
+        <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">                              
+          <button type="submit" class="btn btn-success btn-md btn-block">
+            <span class="glyphicon glyphicon-ok"></span> {{ 'Agregar'|trans({},lenguaje) }}
+          </button>                    
+        </div>        
+        <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">                              
+          <button type="reset" class="btn btn-danger btn-md btn-block"><span class="glyphicon glyphicon-refresh"></span>            
+            {{ 'Cancelar'|trans({},lenguaje) }}</button>      
+        </div>
+      
+        {{ form_end(form) }}                
+      </div>
+    </div>
+  </div>
+        
+{% endblock %}
+
+

@@ -1,0 +1,30 @@
+comerciocta:
+    pattern:  /
+    defaults: { _controller: "FrontendBundle:Comerciocta:index" }
+
+comerciocta_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FrontendBundle:Comerciocta:show" }
+
+comerciocta_new:
+    pattern:  /new
+    defaults: { _controller: "FrontendBundle:Comerciocta:new" }
+
+comerciocta_create:
+    pattern:  /create
+    defaults: { _controller: "FrontendBundle:Comerciocta:create" }
+    requirements: { _method: post }
+
+comerciocta_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FrontendBundle:Comerciocta:edit" }
+
+comerciocta_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FrontendBundle:Comerciocta:update" }
+    requirements: { _method: post|put }
+
+comerciocta_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FrontendBundle:Comerciocta:delete" }
+    requirements: { _method: post|delete }

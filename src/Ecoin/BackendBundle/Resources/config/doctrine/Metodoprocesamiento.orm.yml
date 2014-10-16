@@ -1,0 +1,17 @@
+Ecoin\BackendBundle\Entity\Metodoprocesamiento:
+    type: entity
+    table: metodoprocesamiento
+    repositoryClass: Ecoin\BackendBundle\Entity\MetodoprocesamientoRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        metodo:
+            type: string
+            length: '2'
+        acquirer:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

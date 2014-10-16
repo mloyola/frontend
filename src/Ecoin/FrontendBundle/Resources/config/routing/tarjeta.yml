@@ -1,0 +1,30 @@
+tarjeta:
+    pattern:  /
+    defaults: { _controller: "FrontendBundle:Tarjeta:index" }
+
+tarjeta_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FrontendBundle:Tarjeta:show" }
+
+tarjeta_new:
+    pattern:  /new
+    defaults: { _controller: "FrontendBundle:Tarjeta:new" }
+
+tarjeta_create:
+    pattern:  /create
+    defaults: { _controller: "FrontendBundle:Tarjeta:create" }
+    requirements: { _method: post }
+
+tarjeta_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FrontendBundle:Tarjeta:edit" }
+
+tarjeta_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FrontendBundle:Tarjeta:update" }
+    requirements: { _method: post|put }
+
+tarjeta_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FrontendBundle:Tarjeta:delete" }
+    requirements: { _method: post|delete }

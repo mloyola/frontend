@@ -1,0 +1,30 @@
+local:
+    pattern:  /
+    defaults: { _controller: "FrontendBundle:Local:index" }
+
+local_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FrontendBundle:Local:show" }
+
+local_new:
+    pattern:  /new
+    defaults: { _controller: "FrontendBundle:Local:new" }
+
+local_create:
+    pattern:  /create
+    defaults: { _controller: "FrontendBundle:Local:create" }
+    requirements: { _method: post }
+
+local_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FrontendBundle:Local:edit" }
+
+local_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FrontendBundle:Local:update" }
+    requirements: { _method: post|put }
+
+local_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FrontendBundle:Local:delete" }
+    requirements: { _method: post|delete }

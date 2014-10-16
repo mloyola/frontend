@@ -1,0 +1,17 @@
+Ecoin\BackendBundle\Entity\Idiomanps:
+    type: entity
+    table: idiomanps
+    repositoryClass: Ecoin\BackendBundle\Entity\IdiomanpsRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        identificador:
+            type: string
+            length: '5'
+        descripcion:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

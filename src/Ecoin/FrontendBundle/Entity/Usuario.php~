@@ -1,0 +1,185 @@
+<?php
+
+namespace Ecoin\FrontendBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * Usuario
+ */
+class Usuario implements UserInterface, \Serializable
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="Ingrese su nombre")  
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="Ingrese su apellido")  
+     */
+    private $apellido;
+
+     /**
+     * @var string  
+     * @Assert\Email(message = "El correo electrónico '{{ value }}' ingresado no tiene el formato correcto")
+     * @Assert\NotBlank(message="Ingrese su correo electrónico")          
+     */
+    protected  $usuario;
+
+    /**
+     * @var string   
+     * @Assert\NotBlank(message="Ingrese su contraseña")       
+     */
+    protected  $password;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Sexo", inversedBy="usuarios")
+    * @ORM\JoinColumn(name="sexo_id", referencedColumnName="id")    
+    * @Assert\NotBlank(message="Seleccione su sexo")  
+    */
+    protected $sexo;
+
+    /**
+      * @var string
+      * @Assert\Image(maxSize = "200k")
+     */
+    protected $foto;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Pais")
+     * @ORM\JoinColumn(name="pais_id", referencedColumnName="id")
+     * @Assert\Type("Ecoin\BackendBundle\Entity\Pais")
+     * @Assert\NotBlank(message="Seleccione el país")  
+    */
+    protected $pais;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Ciudad")
+     * @ORM\JoinColumn(name="ciudad_id", referencedColumnName="id")
+     * @Assert\Type("Ecoin\BackendBundle\Entity\Ciudad")
+     * @Assert\NotBlank(message="Seleccione la ciudad")  
+    */
+    public $ciudad;     
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Distrito")
+    * @ORM\JoinColumn(name="distrito_id", referencedColumnName="id")    
+    * @Assert\Type("Ecoin\BackendBundle\Entity\Distrito")
+    */
+    protected $distrito;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Idioma", inversedBy="usuarios")
+    * @ORM\JoinColumn(name="idioma_id", referencedColumnName="id")    
+    */
+    protected $idioma;
+
+     /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Tipodoc", inversedBy="usuarios")
+    * @ORM\JoinColumn(name="tipodoc_id", referencedColumnName="id")
+    */
+    protected $tipodoc;
+
+    /**
+     * @var string     
+     */
+    private $numdoc;
+
+    /**
+     * @var \Date 
+     */
+    private $fchNac;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchCreate;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchUpdate;
+
+    /**
+     * @var boolean
+     */
+    private $marketing;
+
+    /**
+     * @var string     
+     */
+    private $estado;
+
+     /**
+      * @var string
+     */
+    protected $salt;    
+       
+    /**
+     * @var \DateTime
+     */
+    private $fchActive;     
+    
+    /**
+    * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    public function getUsername()
+    {
+        return $this->usuario;        
+    }
+
+    public function serialize()
+    {
+       return serialize($this->getId());
+    }
+ 
+    public function unserialize($data)
+    {
+        $this->id = unserialize($data);
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public  function eraseCredentials()
+    {
+        //Aqui se borran las cokkies y todo lo que se requiera
+        //cuando el usuario se haya desauntenticado
+        return false;
+    }
+
+    public function equals(userInterface $user)
+    {
+        return  $this->getUsername()== $user->getUsername();
+    }   
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+    
+    
+}

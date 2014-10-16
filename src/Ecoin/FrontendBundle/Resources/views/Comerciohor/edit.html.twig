@@ -1,0 +1,112 @@
+{% extends '::frontend_cia.html.twig' %}
+
+{% block title %}
+    {{ 'Horarios de atención'|trans({},lenguaje) }} - {{ 'Editar'|trans({},lenguaje) }}
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('comerciohor_edit', { 'id': entity_comerciohor.id, '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comerciohor_edit', { 'id': entity_comerciohor.id, '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comerciohor_edit', { 'id': entity_comerciohor.id, '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comerciohor_edit', { 'id': entity_comerciohor.id, '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block javascripts %}
+    
+{% endblock %}
+
+{% block activelugar %} in {% endblock %}
+{% block activepago %} {% endblock %}
+{% block activecuenta %} {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+     {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-list-alt text-info"></span>
+        {{ 'Horarios de atención'|trans({},lenguaje) }} / <span class="glyphicon glyphicon-pencil"></span>{{ 'Editar'|trans({},lenguaje) }}
+      </div>
+
+      <div class="panel-body">    
+		<br>
+       
+        {{ form_start(edit_form, {'attr': {'role': 'form'}}) }}
+     
+        {{ form_errors(edit_form) }}         
+
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">              
+          {% if form_errors(edit_form.descripcion) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.descripcion) }}</div>   
+          {% endif %}          
+          <label>{{ 'Descripción'|trans({},lenguaje) }}</label>    
+          {{ form_widget(edit_form.descripcion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        
+        <div class="form-group col-xs-12 col-sm-12 col-md-10 col-lg-10">  
+          <label>{{ 'Seleccione los días de atención'|trans({},lenguaje) }}</label>              
+          <table>
+            {% for dia in edit_form.dias %}    
+              <tr>
+                <td>{{ form_widget(dia) }}</td>
+                <td>{{ dia.vars.label }}</td>
+              </tr>          
+            {% endfor %}
+          </table>
+        </div>
+
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">              
+          {% if form_errors(edit_form.apertura) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.apertura) }}</div>   
+          {% endif %}          
+          <label>{{ 'Hora de apertura'|trans({},lenguaje) }}</label>    
+          <br>
+          {{ form_widget(edit_form.apertura, {'attr': {'class': 'form-control'}}) }}          
+        </div>        
+
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">              
+          {% if form_errors(edit_form.cierre) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.cierre) }}</div>   
+          {% endif %}          
+          <label>{{ 'Hora de cierre'|trans({},lenguaje) }}</label>    
+          <br>
+          {{ form_widget(edit_form.cierre, {'attr': {'class': 'form-control'}}) }}          
+        </div>
+        
+        <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">   
+            <a href="{{ path('comerciohor') }}" class="btn btn-primary btn-md btn-block" title="{{ 'Regresar'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-th-list"></span>{{ 'Listado'|trans({},lenguaje) }}</a>
+          </div>
+
+        <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">                       
+          <button type="submit" class="btn btn-success btn-md btn-block">
+            <span class="glyphicon glyphicon-ok"></span> {{ 'Guardar cambios'|trans({},lenguaje) }}
+          </button>                    
+        </div>        
+        <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">                               
+          <button type="reset" class="btn btn-danger btn-md btn-block"><span class="glyphicon glyphicon-refresh"></span>            
+            {{ 'Cancelar'|trans({},lenguaje) }}</button>      
+        </div>
+      
+        {{ form_end(edit_form) }}                
+      </div>
+    </div>
+  </div>
+        
+{% endblock %}

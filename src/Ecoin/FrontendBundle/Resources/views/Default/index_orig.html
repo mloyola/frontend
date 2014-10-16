@@ -1,0 +1,164 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}
+    {{ 'Busca y encuentra todo en tu móvil'|trans({},lenguaje) }}
+{% endblock %}
+            
+{% block metadesc %}
+NUKARI S.A.C brinda un amplio servicio integral de imprenta a pequeñas y grandes empresas, convirtiéndose en el soporte estratégico que todos buscan para responder a las necesidades de los clientes y que el mercado demanda día a día.
+{% endblock %}
+
+{% block metaetiq %}
+imprenta, impresion, diseño, grafica, tarjeta, tarjetas, comprobantes, sunat, facturas, boletas, guías, imagen, merchandising, calendarios, marketing, papeleria, contratos
+{% endblock %}            
+
+{% block comboidioma %}
+  <li><a href="{{ path('frontend_homepage', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('frontend_homepage', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('frontend_homepage', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('frontend_homepage', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>
+{% endblock %}  
+
+{% block jumbotron %}
+  <div class="jumbotron">
+    <div class="container">
+      
+    {# Inicio pagina 1 #}
+      <div class="col-lg-8">            
+        <div class="col-lg-12">    
+          <h2>{{ 'Busca y encuentra'|trans({},lenguaje) }}<br>{{ 'todo en tu móvil'|trans({},lenguaje) }}</h2>            
+        </div> 
+        <div class="col-lg-12">    
+          <div class="col-lg-6">
+            <div class="col-lg-6">
+              <p><a href="#"><img class="img-responsive" src="{{ asset(global.directorio_img ~ "appstore.png")}}" alt="" ></a></p></div>
+            <div class="col-lg-6">
+              <p><a href="#"><img class="img-responsive" src="{{ asset(global.directorio_img ~ "googleplay.png")}}" alt="" ></a></p>
+            </div>                        
+            <img class="img-responsive" src="{{ asset(global.directorio_img ~ "phone_pag1.png")}}" alt="" >            
+            <span class="label appfree">{{ 'Descarga Gratis la App'|trans({},lenguaje) }}</span>            
+          </div>    
+          <div class="col-lg-6">            
+            <br>                
+          </div>
+        </div>                     
+      </div>                  
+
+      <div class="col-lg-4">
+
+        {# Inicio formulario login #}
+        <div class="col-lg-12">              
+          <span class="glyphicon glyphicon-lock"></span> {{ 'Iniciar sesión'|trans({},lenguaje) }}     
+        </div>         
+        <div class="col-lg-12">              
+          <form class="form-horizontal" role="form">
+            <div class="col-lg-12">    
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon black"><span class="glyphicon glyphicon-envelope"></span></span>
+                  <input type="text" class="form-control" placeholder="{{ 'Correo Electrónico'|trans({},lenguaje) }}" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">                  
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon black"><span class="glyphicon glyphicon-lock"></span></span>
+                  <input type="password" class="form-control" placeholder="{{ 'Contraseña'|trans({},lenguaje) }}" />
+                </div>                
+              </div>                
+            </div>
+            <div class="col-lg-4">               
+              <button type="submit" class="btn btn-boton1 btn-sm">{{ 'Iniciar sesión'|trans({},lenguaje) }}</button>
+            </div>
+            <div class="form-group">              
+              <div class="col-lg-6">
+                <div class="checkbox">
+                  <label><input type="checkbox"/><small>{{ 'Recordar mis datos'|trans({},lenguaje) }}</small></label>
+                </div>
+              </div>              
+              <div class="col-lg-6">                
+                <a href="#"><small>{{ '¿Olvidaste tu contraseña?'|trans({},lenguaje) }}</small></a>
+              </div>                                       
+            </div>             
+          </form>          
+        </div> 
+        {# Fin formulario login #}             
+        <br>
+        {# Inicio formulario registro #}   
+        <div class="col-lg-12"> 
+          <span class="glyphicon glyphicon-user"></span> {{ '¿Eres nuevo? Regístrate es gratis'|trans({},lenguaje) }}          
+        </div>           
+        <div class="col-lg-12">                        
+          <form class="form-horizontal" role="form">
+            <div class="col-lg-12">    
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon black"><span class="glyphicon glyphicon-user"></span></span>
+                  <input type="text" class="form-control" placeholder="{{ 'Nombre completo'|trans({},lenguaje) }}" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">    
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon black"><span class="glyphicon glyphicon-envelope"></span></span>
+                  <input type="text" class="form-control" placeholder="{{ 'Correo Electrónico'|trans({},lenguaje) }}" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">                  
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon black"><span class="glyphicon glyphicon-lock"></span></span>
+                  <input type="password" class="form-control" placeholder="{{ 'Contraseña'|trans({},lenguaje) }}" />
+                </div>                
+              </div>                
+            </div>
+            <div class="col-lg-4">               
+              <button type="submit" class="btn btn-boton1 btn-sm">{{ 'Registrarme'|trans({},lenguaje) }}</button>
+            </div>                     
+          </form>          
+        </div> 
+        {# Fin formulario registro #}
+
+        <br>
+        <br>
+        <br>
+
+        <div class="col-lg-12">
+          <span class="glyphicon glyphicon-stats"></span> {{ 'Negocios'|trans({},lenguaje) }}
+        <p>
+        <button type="submit" class="btn btn-primary btn-sm">{{ 'Registrar Gratis'|trans({},lenguaje) }}</button>        
+        <button type="submit" class="btn btn-primary btn-sm">{{ 'Acceso para Negocios'|trans({},lenguaje) }}</button>        
+        </p>
+        </div>   
+
+      </div>
+      {# Fin pagina 1 #}  
+    </div>
+  </div>
+
+{% endblock %}      
+
+{% block contenido %}
+  <div class="row">
+    
+    <div class="col-lg-12">
+      <nav class="navbar navbar-inverse" role="navigation">
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">            
+            <input type="text" class="form-control" placeholder="Buscando...">
+          </div>
+          &nbsp;
+          <div class="form-group">            
+            <input type="text" class="form-control" placeholder="Dónde...">
+          </div>
+          &nbsp;          
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+      </nav>
+    </div>
+
+  </div> 
+{% endblock %}

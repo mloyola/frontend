@@ -1,0 +1,28 @@
+<?php
+
+namespace Ecoin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipocta
+ */
+class Tipocta
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\BackendBundle\Entity\Pais", inversedBy="tipocuentas")
+     * @ORM\JoinTable(name="tipocuentas_paises")
+     */
+    private $paises;
+    
+}

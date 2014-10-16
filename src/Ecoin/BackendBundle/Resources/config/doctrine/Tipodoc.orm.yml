@@ -1,0 +1,17 @@
+Ecoin\BackendBundle\Entity\Tipodoc:
+    type: entity
+    table: tipodoc
+    repositoryClass: Ecoin\BackendBundle\Entity\TipodocRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        identificador:
+            type: string
+            length: '4'
+        descripcion:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

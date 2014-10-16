@@ -1,0 +1,42 @@
+Ecoin\BackendBundle\Entity\Producto:
+    type: entity
+    table: producto
+    repositoryClass: Ecoin\BackendBundle\Entity\ProductoRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        identificador:
+            type: string
+            length: '2'
+        descripcion:
+            type: string
+            length: '50'
+        estado:
+            type: boolean            
+    manyToOne:
+        tipoprod:
+            targetEntity: Tipoprod
+            inversedBy: productos
+            joinColumn:
+                name: tipoprod_id
+                referencedColumnName: id      
+    oneToMany:
+        procesadores:
+            targetEntity: Procesador
+            mappedBy: productos               
+    manyToMany:
+        paises:
+            targetEntity: Pais
+            inversedBy: productos
+            joinTable:
+                name: productos_paises
+                joinColumns:
+                    producto_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    pais_id:
+                        referencedColumnName: id                        
+    lifecycleCallbacks: {  }

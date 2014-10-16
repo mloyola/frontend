@@ -1,0 +1,139 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}        
+    <link href="{{ asset(global.directorio_css ~ "bootstrap.css")}}" rel="stylesheet">
+    <link href="{{ asset(global.directorio_css ~ "jumbotron_star.css")}}" rel="stylesheet">     
+{% endblock %}
+
+{% block javascripts %}    
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="{{ asset(global.directorio_js ~ "bootstrap.min.js")}}"></script>       
+{% endblock %}
+
+{% block menu %}
+  {#<div class="hidden-lg">#}
+  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ path('frontend_homepage', { '_locale': lenguaje }) }}">
+            <img class="hidden-lg  img-responsive" src="{{ asset(global.directorio_img ~ "logo_small.png")}}" alt="" >
+            <img class="visible-lg img-responsive" src="{{ asset(global.directorio_img ~ "logo.png")}}" alt="" >
+          </a>          
+        </div>
+
+        <div class="navbar-collapse collapse">          
+          
+          <form class="navbar-form navbar-right">                                      
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-flag"></span> {{ 'Idioma'|trans({},lenguaje) }}<span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                {% block comboidioma %}{% endblock %}                 
+              </ul>
+            </div>                    
+          </form>
+                
+          <form class="hidden-xs navbar-form navbar-right">                                      
+            <div class="btn-group">
+              <button class="btn btn-primary btn-sm" type="button">{{ 'Regístrate'|trans({},lenguaje) }}</button>
+              <button data-toggle="dropdown" class="btn btn-primary btn-sm dropdown-toggle" type="button"><span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul role="menu" class="dropdown-menu">
+                <li>
+                    <a href="{{ path('usuario_registro', { '_locale': lenguaje }) }}">
+                      <span class="glyphicon glyphicon-user"></span> {{ 'Usuario'|trans({},lenguaje) }}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ path('comercio_registro', { '_locale': lenguaje }) }}">
+                      <span class="glyphicon glyphicon-bookmark"></span> {{ 'Negocio'|trans({},lenguaje) }}
+                    </a>
+                  </li>   
+              </ul>
+          </div>                   
+          </form>
+                    
+          <form class="navbar-form navbar-right">                                   
+            <div>
+              <a href="{{ path('usuario_login', { '_locale': lenguaje }) }}" class="btn btn-primary btn-sm" ><span class="glyphicon glyphicon-user"></span> {{ 'Acceso Usuario'|trans({},lenguaje) }}</a>
+              <a href="{{ path('comercio_login', { '_locale': lenguaje }) }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-bookmark"></span> {{ 'Acceso Negocio'|trans({},lenguaje) }}</a>
+            </div>                  
+          </form>
+
+          <form class="visible-xs navbar-form navbar-right">
+            <div>
+              <a href="{{ path('usuario_registro', { '_locale': lenguaje }) }}" class="btn btn-primary btn-sm" ><span class="glyphicon glyphicon-user"></span> {{ 'Registrar Usuario'|trans({},lenguaje) }}</a>
+              <a href="{{ path('comercio_registro', { '_locale': lenguaje }) }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-bookmark"></span> {{ 'Registrar Negocio'|trans({},lenguaje) }}</a>
+            </div>          
+          </form>                
+
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    {#</div>#}
+{% endblock %}        
+
+{% block body %}
+    
+    {% block jumbotron %}{% endblock %}  
+    
+    <div class="container">    
+      {% block contenido %}{% endblock %}      
+    </div>  
+
+    {% block descarga %}
+    <hr> 
+    <div class="container">        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center">
+          <h2>{{ 'Descarga Gratis la App'|trans({},lenguaje) }}.</h2>   
+          <div class="col-xs-6 col-sm-6">
+            <a href="{{ asset(global.url_appstore)}}"><img class="img-responsive" src="{{ asset(global.directorio_img ~ "appstore.png")}}" alt="" ></a>
+          </div>
+          <div class="col-xs-6 col-sm-6">
+            <a href="{{ asset(global.url_googleplay)}}"><img class="img-responsive" src="{{ asset(global.directorio_img ~ "googleplay.png")}}" alt="" ></a>
+          </div>
+        </div>          
+    </div>
+    {% endblock %}      
+
+    <hr> 
+
+    <footer>  
+      <div class="col-lg-12" align="center">        
+        <a href="{{ asset(global.url_facebook)}}" target="_blank" title="facebook"><img src="{{ asset(global.directorio_img ~ "face.png")}}" /></a>
+        <a href="{{ asset(global.url_twitter)}}" target="_blank" title="twitter"><img src="{{ asset(global.directorio_img ~ "twitter.png")}}" /></a>
+        <a href="{{ asset(global.url_youtube)}}" target="_blank" title="youtube"><img src="{{ asset(global.directorio_img ~ "youtube.png")}}" /></a>        
+      </div>      
+      <br>
+      <div class="col-lg-12" align="center">
+        <div itemscope itemtype="http://schema.org/Organization">        
+          <span itemprop="name"><strong>{{ global.name_web }}</strong></span> &copy; {{ global.year }}  | {{ 'Todos los derechos reservados'|trans({},lenguaje) }}        
+        </div>  
+      </div>              
+    </footer>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">
+          <a href="#">About Ecoin</a>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <a href="#">{{ 'Términos y Condiciones'|trans({},lenguaje) }}</a>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <a href="#">{{ 'Políticas de Privacidad'|trans({},lenguaje) }}</a>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <a href="#">{{ 'Contacto'|trans({},lenguaje) }}</a>
+        </p>
+      </div>
+    </div>
+
+  </div><!--/.container-->
+{% endblock %}

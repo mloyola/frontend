@@ -1,0 +1,289 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}        
+    <link href="{{ asset(global.directorio_css ~ "bootstrap.css")}}" rel="stylesheet">
+    <link href="{{ asset(global.directorio_css ~ "jumbotron.css")}}" rel="stylesheet">    
+    <link href="{{ asset(global.directorio_css ~ "social-buttons.css")}}" rel="stylesheet">         
+{% endblock %}
+
+{% block javascripts %}    
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="{{ asset(global.directorio_js ~ "bootstrap.min.js")}}"></script>       
+{% endblock %}
+
+{% block menu %}
+  {#<div class="hidden-lg">#}
+  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ path('comercio_main', { '_locale': lenguaje }) }}">
+            <img class="hidden-lg  img-responsive" src="{{ asset(global.directorio_img ~ "logo_small.png")}}" alt="" >
+            <img class="visible-lg img-responsive" src="{{ asset(global.directorio_img ~ "logo.png")}}" alt="" >
+        </a>          
+        </div>
+        <div class="navbar-collapse collapse">                           
+          <form class="navbar-form navbar-right">                       
+            <ul class="nav navbar-nav">            
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-flag"></span> {{ 'Idioma'|trans({},lenguaje) }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  {% block comboidioma %}{% endblock %}                 
+                </ul>             
+              </li>          
+            </ul>
+            <ul class="nav navbar-nav">            
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">                 
+                  <li><a href="{{ path('comercio_logout') }}"><span class="glyphicon glyphicon-log-out"></span> {{ 'Cerrar sesión'|trans({},lenguaje) }}</a></li>                  
+                </ul>             
+              </li>          
+            </ul>      
+          </form>          
+
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    {#</div>#}
+{% endblock %}        
+
+{% block body %}
+        
+    {% block jumbotron %}{% endblock %}       
+
+    <div class="container"> 
+      <div class="row">
+        <div class="col-xs-2 col-sm-4 col-md-4 col-lg-3">
+            <div class="panel-group" id="accordion">                                                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                        <div class="visible-xs">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" title="{{ 'Mis Locales'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-map-marker"></span></a>
+                        </div>
+                        <div class="hidden-xs">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-map-marker"></span>{{ 'Mis Locales'|trans({},lenguaje) }}</a>
+                        </div>                            
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse  {% block activelugar %}{% endblock %} ">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="visible-xs">
+                                            <a href="{{ path('local') }}" title="{{ 'Registro de locales'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-map-marker"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                            <span class="glyphicon glyphicon-map-marker"></span>
+                                            <a href="{{ path('local') }}">{{ 'Registro de locales'|trans({},lenguaje) }}</a>
+                                        </div>                                        
+                                    </td>
+                                </tr>    
+                                <tr>
+                                    <td>
+                                        <div class="visible-xs">
+                                            <a href="{{ path('comerciohor') }}" title="{{ 'Horarios de atención'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-time"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                            <span class="glyphicon glyphicon-time"></span>
+                                            <a href="{{ path('comerciohor') }}">{{ 'Horarios de atención'|trans({},lenguaje) }}</a>
+                                        </div>                                        
+                                    </td>
+                                </tr>                                                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <div class="visible-xs">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" title="{{ 'Mis medios de pago'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-credit-card"></span></a>
+                            </div>
+                            <div class="hidden-xs">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-credit-card">
+                                </span>{{ 'Mis medios de pago'|trans({},lenguaje) }}</a>
+                            </div> 
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse {% block activepago %}{% endblock %} ">
+                        <div class="panel-body">
+                            <table class="table">                                
+                                <tr>
+                                    <td>
+                                        <div class="visible-xs">
+                                            <a href="{{ path('comerciocta') }}" title="{{ 'Mis cuentas de pago'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-list-alt text-info"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                           <span class="glyphicon glyphicon-list-alt text-info"></span>
+                                           <a href="{{ path('comerciocta') }}">{{ 'Mis cuentas de pago'|trans({},lenguaje) }}</a>
+                                        </div>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="visible-xs">
+                                            <a href="#" title="{{ 'Mis últimos pagos'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-shopping-cart text-info"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                           <span class="glyphicon glyphicon-shopping-cart text-info"></span>
+                                           <a href="#">{{ 'Mis últimos pagos'|trans({},lenguaje) }}</a>
+                                        </div>                                        
+                                    </td>
+                                </tr>                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <div class="visible-xs">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" title="{{ 'Reportes'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-file"></span></a>
+                            </div>
+                            <div class="hidden-xs">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                            </span>{{ 'Reportes'|trans({},lenguaje) }}</a>
+                            </div>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse {% block activereporte %}{% endblock %} " >
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="visible-xs">
+                                            <a href="#" title="{{ 'Pagos'|trans({},lenguaje) }}">
+                                            <span class="glyphicon glyphicon-usd"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                           <span class="glyphicon glyphicon-usd"></span><a href="#">{{ 'Pagos'|trans({},lenguaje) }}</a>
+                                        </div>                                        
+                                    </td>
+                                </tr>                               
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <div class="visible-xs">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" title="{{ 'Mi cuenta'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-cog"></span></a>
+                            </div>
+                            <div class="hidden-xs">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-cog">
+                            </span>{{ 'Mi cuenta'|trans({},lenguaje) }}</a>
+                            </div> 
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse {% block activecuenta %}{% endblock %} ">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="visible-xs">
+                                            <a href="{{ path('comercio_edit', { 'id': entity_comercio.id }) }}" title="{{ 'Editar mis datos'|trans({},lenguaje) }}">
+                                            <span class="glyphicon glyphicon-pencil text-primary"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                           <span class="glyphicon glyphicon-pencil text-primary"></span>
+                                            <a href="{{ path('comercio_edit', { 'id': entity_comercio.id }) }}">{{ 'Editar mis datos'|trans({},lenguaje) }}
+                                        </a>
+                                        </div>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>                                        
+                                        <div class="visible-xs">
+                                            <a href="{{ path('comercio_change_pass', { 'id': entity_comercio.id }) }}" title="{{ 'Cambiar mi contraseña'|trans({},lenguaje) }}">
+                                            <span class="glyphicon glyphicon-lock text-primary"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                           <span class="glyphicon glyphicon-lock text-primary"></span>
+                                        <a href="{{ path('comercio_change_pass', { 'id': entity_comercio.id }) }}">{{ 'Cambiar mi contraseña'|trans({},lenguaje) }}</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <div class="visible-xs">
+                                            <a href="{{ path('comercio_notificacion', { 'id': entity_comercio.id }) }}" title="{{ 'Notificaciones'|trans({},lenguaje) }}">
+                                            <span class="glyphicon glyphicon-flash text-info"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                           <span class="glyphicon glyphicon-flash text-info"></span>
+                                        <a href="{{ path('comercio_notificacion', { 'id': entity_comercio.id }) }}">{{ 'Notificaciones'|trans({},lenguaje) }}</a> <span class="label label-info">5</span>
+                                        </div>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td>
+                                        <div class="visible-xs">
+                                            <a href="#" title="{{ 'Darme de baja'|trans({},lenguaje) }}">
+                                            <span class="glyphicon glyphicon-trash text-danger"></span></a>
+                                        </div>    
+
+                                        <div class="hidden-xs">
+                                           <span class="glyphicon glyphicon-trash text-danger"></span><a href="#" class="text-danger">{{ 'Darme de baja'|trans({},lenguaje) }}</a>
+                                        </div>
+                                    </td>
+                                </tr>                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-10 col-sm-8 col-md-8 col-lg-9">
+            {% block contenido %}{% endblock %}                  
+        </div>
+    </div>         
+    </div>   
+    <hr> 
+
+    <div id="footer">
+      <div class="container">
+
+        <p class="text-muted credit">
+            <span itemprop="name"><strong>{{ global.name_web }}</strong></span> &copy; {{ global.year }}  | {{ 'Todos los derechos reservados'|trans({},lenguaje) }}    
+            
+            &nbsp;&nbsp;
+
+            <a href="#">About Ecoin</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="#">{{ 'Términos y Condiciones'|trans({},lenguaje) }}</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="#">{{ 'Políticas de Privacidad'|trans({},lenguaje) }}</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="#">{{ 'Contacto'|trans({},lenguaje) }}</a> 
+            &nbsp;&nbsp;
+            <a href="{{ asset(global.url_facebook) }}" target="_blank" title="facebook"><img src="{{ asset(global.directorio_img ~ "face_small.png")}}" /></a>
+            <a href="{{ asset(global.url_twiiter) }}" target="_blank" title="twitter"><img src="{{ asset(global.directorio_img ~ "twitter_small.png")}}" /></a>
+            <a href="{{ asset(global.url_youtube) }}" target="_blank" title="youtube"><img src="{{ asset(global.directorio_img ~ "youtube_small.png")}}" /></a>       
+        </p>        
+
+      </div>
+    </div>
+
+  </div><!--/.container-->
+{% endblock %}

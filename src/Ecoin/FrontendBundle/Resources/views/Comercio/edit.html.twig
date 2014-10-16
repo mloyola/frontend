@@ -1,0 +1,176 @@
+{% extends '::frontend_cia.html.twig' %}
+
+{% block title %}
+    {{ 'Mi cuenta'|trans({},lenguaje) }} - {{ 'Editar mis datos'|trans({},lenguaje) }}    
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('comercio_edit', { 'id': entity_comercio.id, '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_edit', { 'id': entity_comercio.id, '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_edit', { 'id': entity_comercio.id, '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_edit', { 'id': entity_comercio.id, '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block javascripts %}
+{#
+    {{ parent() }}
+    <script>
+        $(function(){            
+            $("#usuario_pais").change(function(){
+                var data = {
+                    pais_id: $(this).val()
+                };
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ path("select_ciudades") }}',
+                    data: data,
+                    success: function(data) {
+                        $('#usuario_ciudad').html(data);                        
+                    }
+                });
+            });
+        });
+    </script>
+    #}
+{% endblock %}
+
+{% block activelugar %} {% endblock %}
+{% block activepago %} {% endblock %}
+{% block activecuenta %} in {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+     {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-user"></span>
+        {{ 'Mi cuenta'|trans({},lenguaje) }} / <span class="glyphicon glyphicon-pencil"></span>{{ 'Editar mis datos'|trans({},lenguaje) }}
+      </div>
+      <div class="panel-body">        
+        <br>
+       
+        {{ form_start(edit_form, {'attr': {'role': 'form'}}) }}
+     
+        {{ form_errors(edit_form) }} 
+             
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">            
+            <label>{{ 'Correo electrónico'|trans({},lenguaje) }}</label>    
+            <input type="text" class="form-control" value='{{ entity_comercio.usuario }}' disabled>
+          </div>
+                  
+        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">              
+          {% if form_errors(edit_form.nombre) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.nombre) }}</div>   
+          {% endif %}          
+          <label>{{ 'Nombre Comercial'|trans({},lenguaje) }}</label>    
+          {{ form_widget(edit_form.nombre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">              
+          {% if form_errors(edit_form.razonsocial) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.razonsocial) }}</div>   
+          {% endif %}
+          <label>{{ 'Razón Social'|trans({},lenguaje) }}</label>    
+          {{ form_widget(edit_form.razonsocial, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">                 
+          {% if form_errors(edit_form.ruc) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.ruc) }}</div>   
+          {% endif %}
+          <label>{{ 'RUC/CUIT'|trans({},lenguaje) }}</label>    
+          {{ form_widget(edit_form.ruc, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">                 
+          {% if form_errors(edit_form.contacto) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.contacto) }}</div>   
+          {% endif %}
+          <label>{{ 'Persona de contacto'|trans({},lenguaje) }}</label>    
+          {{ form_widget(edit_form.contacto, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">              
+          {% if form_errors(edit_form.telefono) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.telefono) }}</div>   
+          {% endif %}          
+          <label>{{ 'Teléfono fijo'|trans({},lenguaje) }}</label>    
+          {{ form_widget(edit_form.telefono, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">              
+          {% if form_errors(edit_form.movil) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(edit_form.movil) }}</div>   
+          {% endif %}
+          <label>{{ 'Teléfono móvil'|trans({},lenguaje) }}</label>    
+          {{ form_widget(edit_form.movil, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">                  
+           {% if form_errors(edit_form.categoria) == '' %}
+          
+            {% else %} 
+              <div class="alert alert-danger">{{ form_errors(edit_form.categoria) }}</div>   
+            {% endif %}
+            <label>{{ 'Categoría'|trans({},lenguaje) }}</label>    
+            {{ form_widget(edit_form.categoria, {'attr': {'class': 'form-control'}}) }}
+        </div>
+                
+       <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">                  
+           {% if form_errors(edit_form.pais) == '' %}
+          
+            {% else %} 
+              <div class="alert alert-danger">{{ form_errors(edit_form.pais) }}</div>   
+            {% endif %}
+            <label>{{ 'País'|trans({},lenguaje) }}</label>    
+            {{ form_widget(edit_form.pais, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        
+        <div class="form-group col-xs-11 col-sm-11 col-md-11 col-lg-11">                    
+          {{ form_widget(edit_form.marketing) }} {{ 'Quiero recibir novedades y promociones por correo electrónico'|trans({},lenguaje) }}.
+        </div>
+
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">                    
+          <button type="submit" class="col-lg-12 btn btn-success">
+            <span class="glyphicon glyphicon-ok"></span> {{ 'Guardar cambios'|trans({},lenguaje) }}
+          </button>                    
+        </div>        
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">                    
+          <a href="{{ path('comercio_main', { '_locale': lenguaje }) }}" class="col-lg-12 btn btn-danger">
+            <span class="glyphicon glyphicon-refresh"></span>            
+            {{ 'Cancelar'|trans({},lenguaje) }}
+          </a>              
+        </div>
+
+        {{ form_end(edit_form) }}
+      </div>
+    </div>
+  </div>
+
+          
+{% endblock %}
+

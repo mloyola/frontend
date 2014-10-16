@@ -1,0 +1,24 @@
+Ecoin\FrontendBundle\Entity\Codigoactivauser:
+    type: entity
+    table: codigoactivauser
+    repositoryClass: Ecoin\FrontendBundle\Entity\CodigoactivauserRepository    
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        codigo:
+            type: string
+            length: 4
+        fchCreate:
+            type: datetime
+            column: fch_create
+    ManyToOne:                        
+        usuario:
+            targetEntity: Ecoin\FrontendBundle\Entity\Usuario
+            inversedBy: Codigoactivausers
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id              
+    lifecycleCallbacks: {  }

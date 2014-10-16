@@ -1,0 +1,62 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}
+    {{ 'Preguntas frecuentes'|trans({},lenguaje) }}
+{% endblock %}
+
+{% block header_barra %} <nav class="navbar navbar-default navbar-fixed-top navbar-shrink"> {% endblock %}
+
+{% block menu_item %}
+    <li><a class="page-scroll" href="{{ path('frontend_homepage') }}">{{ "Paga tus compras" | trans }}</a></li>
+    <li><a class="page-scroll" href="{{ path('frontend_homepage_comercio') }}">{{ "Para Comercios" | trans }}</a></li>                    
+    <li><a class="page-scroll" href="#faqs">{{ "Faqs" | trans }}</a></li>
+    <li><a class="page-scroll" href="{{ path('usuario_login') }}">{{ "Iniciar Sesion" | trans }}</a></li>    
+{% endblock %}
+
+{% block body %}    
+    <section id="faqs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{ 'Preguntas frecuentes'|trans({},lenguaje) }}</h2>                    
+                </div>
+            </div>
+            <div class="row text-center">
+                 <div class="col-md-4">                    
+                    <h4 class="service-heading">{{ '¿Cómo funciona?'|trans({},lenguaje) }}</h4>
+                    <p class="text-muted">{{ "Evitaras el posible robo o perdida de dinero o tarjetas, además obtendrás la seguridad y confidencialidad de tus datos y transacciones" | trans }}.</p>
+                    <a href="#">{{ "Descarga gratis la App de Ecoin en tu SmartPhone" | trans }}</a>
+                </div>
+                <div class="col-md-4">                   
+                    <h4 class="service-heading">{{ '¿Cómo me registro como Usuario?'|trans({},lenguaje) }}</h4>
+                    <p class="text-muted">{{ "Podrás efectuar el pago de tus compras desde tu Smartphone, a través de una amigable interfaz que te ayudara a administrar tus compras y pagos" | trans }}.</p>
+                    <a href="#">{{ "Regístrate gratis como Usuario" | trans }}</a>
+                </div>
+                <div class="col-md-4">                   
+                    <h4 class="service-heading">{{ '¿Cómo puedo afiliar mi Comercio?'|trans({},lenguaje) }}</h4>
+                    <p class="text-muted">{{ "Gracias a la App de Ecoin ya no necesitaras llevar efectivo o tarjetas de crédito/debito para comprar, podrás pagar desde tu Smartphone" | trans }}.</p>
+                    <a href="#">{{ "Regístrate gratis como Comercio" | trans }}</a>
+                </div>               
+            </div>
+            <p></p>
+            <div class="row text-center">
+                 <div class="col-md-4">                    
+                    <h4 class="service-heading">{{ '¿Donde puedo descargar la App?'|trans({},lenguaje) }}</h4>
+                    <p class="text-muted">{{ "Evitaras el posible robo o perdida de dinero o tarjetas, además obtendrás la seguridad y confidencialidad de tus datos y transacciones" | trans }}.</p>
+                    <a href="#">{{ "Descarga gratis la App de Ecoin en tu SmartPhone" | trans }}</a>
+                </div>
+                <div class="col-md-4">                   
+                    <h4 class="service-heading">{{ '¿Cómo me registro como Usuario?'|trans({},lenguaje) }}</h4>
+                    <p class="text-muted">{{ "Podrás efectuar el pago de tus compras desde tu Smartphone, a través de una amigable interfaz que te ayudara a administrar tus compras y pagos" | trans }}.</p>
+                    <a href="#">{{ "Regístrate gratis como Usuario" | trans }}</a>
+                </div>
+                <div class="col-md-4">                   
+                    <h4 class="service-heading">{{ '¿Cómo puedo afiliar mi Comercio?'|trans({},lenguaje) }}</h4>
+                    <p class="text-muted">{{ "Gracias a la App de Ecoin ya no necesitaras llevar efectivo o tarjetas de crédito/debito para comprar, podrás pagar desde tu Smartphone" | trans }}.</p>
+                    <a href="#">{{ "Regístrate gratis como Comercio" | trans }}</a>
+                </div>               
+            </div>
+        </div>
+    </section>
+
+{% endblock %}        

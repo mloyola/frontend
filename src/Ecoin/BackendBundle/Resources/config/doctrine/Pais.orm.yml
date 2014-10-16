@@ -1,0 +1,35 @@
+Ecoin\BackendBundle\Entity\Pais:
+    type: entity
+    table: pais
+    repositoryClass: Ecoin\BackendBundle\Entity\PaisRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255             
+
+        codigo:
+            type: string
+            length: 2
+
+        identificador:
+            type: string
+            length: 3    
+    oneToMany:
+        subcategorias:
+            targetEntity: Subcategoria
+            mappedBy: paises
+        productos:
+            targetEntity: Producto
+            mappedBy: paises        
+        monedas:
+            targetEntity: Moneda
+            mappedBy: monedas
+        tipocuentas:
+            targetEntity: Tipocta
+            mappedBy: tipocuentas    
+    lifecycleCallbacks: {  }

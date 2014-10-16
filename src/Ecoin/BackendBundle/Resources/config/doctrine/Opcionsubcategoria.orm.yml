@@ -1,0 +1,14 @@
+Ecoin\BackendBundle\Entity\Opcionsubcategoria:
+    type: entity
+    table: opcionsubcategoria
+    repositoryClass: Ecoin\BackendBundle\Entity\OpcionsubcategoriaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        descripcion:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

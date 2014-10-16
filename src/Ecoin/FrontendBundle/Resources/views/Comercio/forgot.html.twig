@@ -1,0 +1,70 @@
+{% extends '::frontend_star.html.twig' %}
+
+{% block title %}
+    {{ '¿Olvidaste tu contraseña?'|trans({},lenguaje) }}
+{% endblock %}
+            
+{% block metadesc %}
+
+{% endblock %}
+
+{% block metaetiq %}
+
+{% endblock %}            
+
+{% block comboidioma %}
+  <li><a href="{{ path('comercio_forgot', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_forgot', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_forgot', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_forgot', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block contenido %}
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          {% for flashMessage in app.session.flashbag.get('info') %}
+            <div class="alert alert-success">
+              <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+            </div>
+          {% endfor %}
+
+          {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger">
+              <span class="glyphicon glyphicon-remove"></span>{{ flashMessage }}
+            </div>
+          {% endfor %}
+
+          <h3 class="text-center"><span class="glyphicon glyphicon-bookmark"></span> {{ 'Negocio'|trans({},lenguaje) }}</h3>
+          <h3 class="text-center"><span class="glyphicon glyphicon-lock"></span> {{ '¿Olvidaste tu contraseña?'|trans({},lenguaje) }}</h3>
+                    
+          <p class="text-justify">
+              <small>{{ 'Ingresa la dirección de correo electrónico que has registrado para enviarte tu contraseña'|trans({},lenguaje) }}.</small>
+          </p>
+
+          <form action="{{ path('comercio_forgot', { '_locale': lenguaje }) }}" class="form form-signup" role="form" method="post">  
+            <div class="form-group">
+              <div class="input-group">                  
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                  {{ form_widget(formulario.email, { 'attr': { 'class': 'form-control', 'placeholder':'Correo electrónico'} }) }}
+              </div>
+            </div>                    
+            {{ form_rest(formulario) }}
+            <button type="submit" class="btn btn-lg btn-primary btn-block">{{ 'Enviar'|trans({},lenguaje) }}</button>
+          </form>           
+
+        </div>
+      </div>
+    </div>
+  </div>  
+{% endblock %}
+
+{% block descarga %} {% endblock %}   

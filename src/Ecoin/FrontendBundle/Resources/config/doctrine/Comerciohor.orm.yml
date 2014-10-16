@@ -1,0 +1,45 @@
+Ecoin\FrontendBundle\Entity\Comerciohor:
+    type: entity
+    table: comerciohor
+    repositoryClass: Ecoin\FrontendBundle\Entity\ComerciohorRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        descripcion:
+            type: string
+            length: '50'
+        apertura:
+            type: datetime
+            column: apertura
+        cierre:
+            type: datetime
+            column: cierre    
+        fchCreate:
+            type: datetime
+            column: fch_create
+        fchUpdate:
+            type: datetime
+            column: fch_update     
+    manyToOne:        
+        comercio:
+            targetEntity: Ecoin\FrontendBundle\Entity\Comercio
+            inversedBy: comerciohrs
+            joinColumn:
+                name: comercio_id
+                referencedColumnName: id                                   
+    manyToMany:
+        dias:
+            targetEntity: Ecoin\BackendBundle\Entity\Diasatencion
+            inversedBy: comerciohrs
+            joinTable:
+                name: comerciohrs_dias
+                joinColumns:
+                    comerciohor_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    diasatencion_id:
+                        referencedColumnName: id         
+    lifecycleCallbacks: {  }

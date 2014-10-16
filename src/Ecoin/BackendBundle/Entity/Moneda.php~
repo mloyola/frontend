@@ -1,0 +1,42 @@
+<?php
+
+namespace Ecoin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Moneda
+ */
+class Moneda
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $codigo;
+
+    /**
+     * @var string
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     */
+    private $sigla;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\BackendBundle\Entity\Procesador", mappedBy="monedas")
+    */
+    private $procesadores;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\BackendBundle\Entity\Pais", inversedBy="monedas")
+     * @ORM\JoinTable(name="monedas_paises")
+     */
+    private $paises;
+}

@@ -1,0 +1,17 @@
+Ecoin\BackendBundle\Entity\Idioma:
+    type: entity
+    table: idioma
+    repositoryClass: Ecoin\BackendBundle\Entity\IdiomaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+        router:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

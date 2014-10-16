@@ -1,0 +1,53 @@
+{% extends '::frontend_star.html.twig' %}
+
+{% block title %}
+    {{ 'Felicitaciones has registrado tu negocio satisfactoriamente'|trans({},lenguaje) }}
+{% endblock %}
+            
+{% block metadesc %}
+
+{% endblock %}
+
+{% block metaetiq %}
+
+{% endblock %}            
+
+{% block comboidioma %}
+  <li><a href="{{ path('usuario_show', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_show', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_show', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_show', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}         
+
+{% block contenido %} 
+  
+  <div class="hidden-xs">
+    <br>
+    <br>
+    <br>
+  </div>
+
+  <div class="col-xs-12 text-center">       
+    <h1>{{ '¡Felicitaciones!'|trans({},lenguaje) }}</h1>
+    <h2>{{ 'Has creado tu cuenta satisfactoriamente'|trans({},lenguaje) }}</h2>
+    <br>
+    <p class="lead">
+      {{ 'Para activar tu cuenta necesitas hacer click en el link que hemos enviado a la dirección de correo electrónico que has ingresado'|trans({},lenguaje) }}.
+    </p>    
+    <p>
+      <a href="{{ path('usuario_login', { '_locale': lenguaje }) }}" class="btn btn-lg btn-login"><span class="glyphicon glyphicon-log-in"></span> {{ 'Ingresar'|trans({},lenguaje) }}</a>          
+    </p>    
+    <br>
+    <p>
+      <h2>{{'Invita a tus amigos'|trans({},lenguaje) }}</h2>
+      <a href="" class="btn btn-md btn-primary"><i class="icon-facebook"></i> | Connect with Facebook</a>    
+    </p>
+  </div>
+
+{% endblock %}
+
+{% block descarga %} {% endblock %}   

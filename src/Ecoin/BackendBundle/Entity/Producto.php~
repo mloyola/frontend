@@ -1,0 +1,49 @@
+<?php
+
+namespace Ecoin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Producto
+ */
+class Producto
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $identificador;
+
+    /**
+     * @var string
+     */
+    private $descripcion;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Tipoprod", inversedBy="productos")
+    * @ORM\JoinColumn(name="tipoprod_id", referencedColumnName="id")
+    */
+    protected $tipoprod; 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\BackendBundle\Entity\Pais", inversedBy="productos")
+     * @ORM\JoinTable(name="productos_paises")
+     */
+    private $paises;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\BackendBundle\Entity\Procesador", mappedBy="productos")
+    */
+    private $procesadores;
+
+    /**
+     * @ORM\Column(type="boolean")     
+     */
+    protected $estado;
+    
+}

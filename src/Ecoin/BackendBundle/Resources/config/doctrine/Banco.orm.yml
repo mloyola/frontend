@@ -1,0 +1,25 @@
+Ecoin\BackendBundle\Entity\Banco:
+    type: entity
+    table: banco
+    repositoryClass: Ecoin\BackendBundle\Entity\BancoRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        identificador:
+            type: string
+            length: '5'
+        descripcion:
+            type: string
+            length: '50'
+
+    manyToOne:
+        pais:
+            targetEntity: Pais
+            inversedBy: bancos
+            joinColumn:
+                name: pais_id
+                referencedColumnName: id            
+    lifecycleCallbacks: {  }

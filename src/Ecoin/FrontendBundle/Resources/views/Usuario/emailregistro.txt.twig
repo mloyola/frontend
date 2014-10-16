@@ -1,0 +1,57 @@
+<html>
+
+<head>
+	 <meta charset="utf-8">
+    <style>
+        body { font: 13px/1.5 Arial, sans-serif; }
+        ul { margin-left: .5em; padding-left: 0; }
+
+    </style>
+</head>
+
+<body>
+
+    <h2>{{ titulo1 }}</h2>
+    
+    <p>
+       <strong>{{ sr }}.</strong> {{ nombre }}    
+    </p>
+
+    <p>
+        {{ texto_activacion }}
+        <br>
+        <a href="#">{{ texto_activacion }}</a>
+    </p>
+    <p>
+        <h3>{{ titulo2 }}</h3>
+        <ul>
+            <li>{{ linea1 }}</li>
+            <li>{{ linea2 }}</li>
+            <li>{{ linea3 }}</li>
+        </ul>
+
+        <strong>{{datos_acceso }}:</strong>
+        <br>
+        <strong>{{ texto_email }}</strong> {{ email }} <br>   
+        <strong>{{ texto_password }}</strong> {{ password }}    
+    </p>
+    
+    <p>
+        <a href="http://www.ecoinmobile.com/es/usr/login" target="_blank">{{ texto_login }}</a>
+    </p>
+	
+    <p>
+        <a href="http://www.ecoinmobile.com/es/usr/login" target="_blank">{{ buscar_establecimiento }}</a>
+    </p>
+
+    <p>
+        {{ para_informes }}: <a href="http://www.ecoinmobile.com/es/usr/login" target="_blank">info@ecoinmobile.com</a>
+    </p>
+
+    <p>
+        {{ visitanos_en }}: <a href="http://www.ecoinmobile.com" target="_blank">www.ecoinmobile.com</a>
+    </p>
+    
+</body>
+
+</html>

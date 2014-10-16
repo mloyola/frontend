@@ -1,0 +1,140 @@
+{% extends '::frontend_usr.html.twig' %}
+
+{% block title %}    
+    {{ 'Lugares'|trans({},lenguaje) }} - {{ 'Buscar'|trans({},lenguaje) }}    
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('place_search', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('place_search', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('place_search', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('place_search', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block activelugar %} in {% endblock %}
+{% block activepago %} {% endblock %}
+{% block activecuenta %} {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+     {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-map-marker"></span>{{ 'Lugares'|trans({},lenguaje) }}
+      </div>
+      
+      <div class="panel-body">    
+        <br>
+
+        {{ form_start(form, {'attr': {'role': 'form'}}) }}
+     
+        {{ form_errors(form) }} 
+       
+        <div class="form-group col-xs-8 col-sm-9 col-md-9 col-lg-9">              
+          {% if form_errors(form.categoria) == '' %}
+          
+          {% else %}             
+            <div class="alert alert-danger">{{ form_errors(form.categoria) }}</div>   
+          {% endif %}                    
+          {{ form_widget(form.categoria, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group col-xs-4 col-sm-3 col-md-3 col-lg-3">                       
+          <button type="submit" class="btn btn-success btn-md btn-block">
+            <span class="glyphicon glyphicon-search"></span> {{ 'Buscar'|trans({},lenguaje) }}
+          </button>                    
+        </div>                
+      
+        {{ form_end(form) }}    
+        
+        <br>
+
+        {% if entity_locales | length == 1  or entity_locales | length == 0 %}
+          <p class="text-right">{{ 'Se ha encontrado'|trans({},lenguaje)}} {{ entity_locales | length }} {{ 'resultado'|trans({},lenguaje)}}.</p>
+        {% else %}
+          <p class="text-right">{{ 'Se han encontrado'|trans({},lenguaje)}} {{ entity_locales | length }} {{ 'resultados'|trans({},lenguaje)}}.</p>
+        {% endif %}
+        
+        {% if entity_locales | length > 0 %}
+          <ol>              
+              {% for entity in entity_locales %}
+                <li>                  
+                  <strong><a href="#">{{ entity.comercio.nombre }} - {{ entity.descripcion }}</a></strong>
+                  
+                  <div>{{ entity.comercio.categoria.nombre }}</div>
+                  
+                                  
+                  {% for opcion in entity.subcategorias %}    
+                    {{ opcion.opcionsubcategoria.descripcion }},
+                  {% endfor %}
+
+                  <div>
+                    {{ entity.via.descripcion }}. {{ entity.nombrevia }} {{ entity.numero }}                  
+                    {% if entity.numinterior == ''%}
+                    
+                    {% else %}                    
+                      - {{ entity.interior.descripcion }}. {{ entity.numinterior }}
+                    {% endif %}
+                  </div>
+
+                  {% if entity.referencia == ''%}
+                   
+                  {% else %}
+                    <div>{{ entity.referencia }}</div>   
+                  {% endif %}
+
+                  <div>{{ entity.distrito.nombre }}, {{ entity.ciudad.nombre }}</div>                  
+                  
+                  <br>
+
+                  <div>                    
+                    {% for horario in entity.horarios %}                        
+                      {{ horario.descripcion }} {{ horario.apertura | date('H:i') }} - {{ horario.cierre | date('H:i') }} <br>
+                    {% endfor %}                    
+                  </div>
+                  
+                  <br>
+
+                  <a href="#" title="{{ 'Comentarios'|trans({},lenguaje)}}" class="col-xs-12 col-sm-12">
+                      <span class="glyphicon glyphicon-comment"> </span>
+                      <span class="badge pull-left">42</span>
+                  </a>
+
+                  <div>                
+                    {% if entity.telefono == ''%}
+
+                    {% else %}
+                      <a href="#" class="btn btn-primary col-xs-12 col-sm-4"><span class="glyphicon glyphicon-earphone"> {{ entity.telefono }}</span></a>
+                    {% endif %}
+
+                    {% if entity.email == ''%}
+
+                    {% else %}
+                      <a href="#" class="btn btn-primary col-xs-12 col-sm-4"><span class="glyphicon glyphicon-envelope"> {{ entity.email }}</span></a>
+                    {% endif %}
+
+                    <a href="#" class="btn btn-primary col-xs-12 col-sm-4"><span class="glyphicon glyphicon-credit-card"> {{ 'Pagar'|trans({},lenguaje)}}</span></a>
+                  </div>
+
+                  <br>
+                </li>
+              {% endfor %}  
+          </ol>
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+        
+{% endblock %}

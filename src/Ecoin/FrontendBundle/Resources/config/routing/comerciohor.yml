@@ -1,0 +1,30 @@
+comerciohor:
+    pattern:  /
+    defaults: { _controller: "FrontendBundle:Comerciohor:index" }
+
+comerciohor_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FrontendBundle:Comerciohor:show" }
+
+comerciohor_new:
+    pattern:  /new
+    defaults: { _controller: "FrontendBundle:Comerciohor:new" }
+
+comerciohor_create:
+    pattern:  /create
+    defaults: { _controller: "FrontendBundle:Comerciohor:create" }
+    requirements: { _method: post }
+
+comerciohor_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FrontendBundle:Comerciohor:edit" }
+
+comerciohor_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FrontendBundle:Comerciohor:update" }
+    requirements: { _method: post|put }
+
+comerciohor_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FrontendBundle:Comerciohor:delete" }
+    requirements: { _method: post|delete }

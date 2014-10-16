@@ -1,0 +1,59 @@
+usuario_login:
+    pattern:  /login
+    defaults: { _controller: "FrontendBundle:Usuario:login" }
+
+usuario_login_check:
+    pattern:   /login_check
+
+usuario_logout:
+    pattern:   /logout
+
+usuario_show:
+    pattern:  /show
+    defaults: { _controller: "FrontendBundle:Usuario:show" }
+
+usuario_active:
+    pattern:  /{id}/active
+    defaults: { _controller: "FrontendBundle:Usuario:active" }
+
+usuario_create:
+    pattern:  /create
+    defaults: { _controller: "FrontendBundle:Usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FrontendBundle:Usuario:edit" }
+
+usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FrontendBundle:Usuario:update" }
+    requirements: { _method: post|put }
+
+usuario_registro:
+    pattern:  /register
+    defaults: { _controller: "FrontendBundle:Usuario:registro" }
+
+usuario_main:
+    pattern:  /main
+    defaults: { _controller: "FrontendBundle:Usuario:main" }
+
+usuario_forgot:
+    pattern:  /forgot
+    defaults: { _controller: "FrontendBundle:Usuario:forgot" }
+
+usuario_change_pass:
+    pattern:  /{id}/changepass
+    defaults: { _controller: "FrontendBundle:Usuario:changepass" }
+
+usuario_notificacion:
+    pattern:  /{id}/notification
+    defaults: { _controller: "FrontendBundle:Usuario:notificacion" }
+
+frontend_tarjeta:
+    resource: "@FrontendBundle/Resources/config/routing/tarjeta.yml"
+    prefix:   /card
+
+frontend_place:
+    resource: "@FrontendBundle/Resources/config/routing/place.yml"
+    prefix:   /place

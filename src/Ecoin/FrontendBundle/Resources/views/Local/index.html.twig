@@ -1,0 +1,133 @@
+{% extends '::frontend_cia.html.twig' %}
+
+{% block title %}    
+    {{ 'Mis Locales'|trans({},lenguaje) }} - {{ 'Listado'|trans({},lenguaje) }}    
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('local', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('local', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('local', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('local', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block activelugar %} in {% endblock %}
+{% block activepago %}  {% endblock %}
+{% block activecuenta %} {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+     {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-map-marker"></span>
+        {{ 'Mis Locales'|trans({},lenguaje) }} -  
+        <a href="{{ path('local_new', { '_locale': lenguaje }) }}" class="btn btn-primary">
+          <span class="glyphicon glyphicon-new-window"></span>Nuevo</a>        
+      </div>
+      <div class="panel-body">    
+        
+        <div class="table-responsive">
+          <table class="table table-bordered">
+           <thead>
+              <tr class="active">                                 
+                <th class="hidden-xs">#</th>               
+                <th>{{ 'Local'|trans({},lenguaje) }}</th>                
+                <th></th>                
+              </tr>
+            </thead>   
+            <tbody>
+              {% for entity in entity_local %}
+                <tr>                                       
+                  <td class="hidden-xs">{{ entity.id }}</td>    
+                  <td>  
+                    {{ entity.descripcion }}                    
+                    <br>                    
+                  </td>
+
+                  <td class="visible-lg">                    
+                    <a href="{{ path('local_show', { 'id': entity.id }) }}" title="{{ 'Ver'|trans({},lenguaje) }}" class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span>
+                      {{ 'Ver'|trans({},lenguaje) }}
+                    </a> 
+                    
+                    <a href="{{ path('local_edit', { 'id': entity.id }) }}" title="{{ 'Editar'|trans({},lenguaje) }}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
+                      {{ 'Editar'|trans({},lenguaje) }}
+                    </a>
+                    
+                    <a href="{{ path('local_show', { 'id': entity.id }) }}" title="{{ 'Editar'|trans({},lenguaje) }}" title="{{ 'Eliminar'|trans({},lenguaje) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>
+                      {{ 'Eliminar'|trans({},lenguaje) }}
+                    </a>
+                  </td>
+
+                  <td class="visible-sm visible-md">                    
+                    <a href="{{ path('local_show', { 'id': entity.id }) }}" title="{{ 'Ver'|trans({},lenguaje) }}" class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span>
+                    </a> 
+                    
+                    <a href="{{ path('local_edit', { 'id': entity.id }) }}" title="{{ 'Editar'|trans({},lenguaje) }}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    
+                    <a href="{{ path('local_show', { 'id': entity.id }) }}" title="{{ 'Editar'|trans({},lenguaje) }}" title="{{ 'Eliminar'|trans({},lenguaje) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                  </td>
+
+                  <td class="visible-xs">
+                    <p>
+                    <a href="{{ path('local_show', { 'id': entity.id }) }}" title="{{ 'Detalle'|trans({},lenguaje) }}" class="btn btn-info"><span class="glyphicon glyphicon-eye-open"></span>
+                    </a> 
+                    </p>
+                    <p>
+                    <a href="{{ path('local_edit', { 'id': entity.id }) }}" title="{{ 'Editar'|trans({},lenguaje) }}" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></a>
+                    </p>
+                    <p>
+                    <a href="{{ path('local_show', { 'id': entity.id }) }}" title="{{ 'Editar'|trans({},lenguaje) }}" title="{{ 'Eliminar'|trans({},lenguaje) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                    </p>
+                  </td>
+                  
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class ="hidden-xs hidden-sm col-md-2 col-lg-4">    
+    <ul class="list-group">  
+      <li class="list-group-item">        
+        <strong>{{ 'Beneficios al registrar tú local'|trans({},lenguaje) }}</strong>        
+        <p>
+          {{ 'Al registrar tus locales tendrás la oportunidad de ganar mayor visibilidad de tu negocio y llegar a más posibles clientes que son usuarios de Ecoin'|trans({},lenguaje) }}.
+        </p>
+      </li>      
+      <li class="list-group-item">        
+        <span class="badge">2500</span>
+        <span class="glyphicon glyphicon-user"></span>
+        {{ 'Posibles clientes'|trans({},lenguaje) }}
+      </li>
+      <li class="list-group-item">
+        <span class="badge">4000</span>
+        <span class="glyphicon glyphicon-home"></span>
+        {{ 'Negocios registrados'|trans({},lenguaje) }}
+      </li>
+      <li class="list-group-item">
+        <span class="badge">1500</span>
+        <span class="glyphicon glyphicon-cutlery"></span>
+        {{ 'Restaurantes'|trans({},lenguaje) }}        
+      </li>
+    </ul>
+  </div>
+        
+{% endblock %}

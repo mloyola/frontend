@@ -1,0 +1,68 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}
+    {{ 'Paga desde tu móvil de forma fácil y segura'|trans({},lenguaje) }}
+{% endblock %}
+
+{% block menu_item %}
+    <li><a class="page-scroll" href="#comprar">{{ "Paga tus compras" | trans }}</a></li>
+    <li><a class="page-scroll" href="{{ path('frontend_homepage_comercio') }}">{{ "Para Comercios" | trans }}</a></li>                    
+    <li><a class="page-scroll" href="{{ path('frontend_homepage_faqs') }}">{{ "Faq" | trans }}</a></li>
+    <li><a class="page-scroll" href="{{ path('usuario_login') }}">{{ "Iniciar Sesion" | trans }}</a></li>    
+{% endblock %}
+
+{% block body %}
+	<!-- Header -->
+    <header class="header-usuario">
+        <div class="container">
+            <div class="intro-text">
+               
+                <div class="intro-heading hidden-xs">{{ "Paga tus compras desde tu móvil" | trans }}</div>                
+                <div class="intro-heading hidden-xs">{{ "No necesitas llevar efectivo" | trans }}</div>                                
+
+                <a href="#" class="page-scroll btn btn-md"><img src="http://localhost/templates/agency/img/googleplay.png"></a>
+                <a href="#" class="page-scroll btn btn-md"><img src="http://localhost/templates/agency/img/appstore.png"></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="comprar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{ "Paga tus compras" | trans }}</h2>                    
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">{{ "Es muy fácil y sencillo" | trans }}</h4>
+                    <p class="text-muted">{{ "Podrás efectuar el pago de tus compras desde tu Smartphone, a través de una amigable interfaz que te ayudara a administrar tus compras y pagos" | trans }}.</p>
+                    <a href="#">{{ "Regístrate gratis como Usuario" | trans }}</a>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">{{ "No necesitas llevar efectivo o tarjetas" | trans }}.</h4>
+                    <p class="text-muted">{{ "Gracias a la App de Ecoin ya no necesitaras llevar efectivo o tarjetas de crédito/debito para comprar, podrás pagar desde tu Smartphone" | trans }}.</p>
+                    <a href="#">{{ "Descarga gratis la App de Ecoin en tu SmartPhone" | trans }}</a>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">{{ "Es Seguro y Confiable" | trans }}</h4>
+                    <p class="text-muted">{{ "Evitaras el posible robo o perdida de dinero o tarjetas, además obtendrás la seguridad y confidencialidad de tus datos y transacciones" | trans }}.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}        

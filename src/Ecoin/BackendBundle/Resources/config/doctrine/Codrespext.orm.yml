@@ -1,0 +1,17 @@
+Ecoin\BackendBundle\Entity\Codrespext:
+    type: entity
+    table: codrespext
+    repositoryClass: Ecoin\BackendBundle\Entity\CodrespextRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        codigo:
+            type: string
+            length: '4'
+        descripcion:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

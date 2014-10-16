@@ -1,0 +1,47 @@
+<?php
+
+namespace Ecoin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Procesador
+ */
+class Procesador
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Pais", inversedBy="paises")
+    * @ORM\JoinColumn(name="pais_id", referencedColumnName="id")
+    */
+    protected $pais; 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\BackendBundle\Entity\Metodo", inversedBy="procesadores")
+     * @ORM\JoinTable(name="procesadores_metodos")
+     */
+    private $metodos;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\BackendBundle\Entity\Moneda", inversedBy="procesadores")
+     * @ORM\JoinTable(name="procesadores_monedas")
+     */
+    private $monedas;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\BackendBundle\Entity\Producto", inversedBy="procesadores")
+     * @ORM\JoinTable(name="procesadores_productos_2p")
+     */
+    private $productos;
+
+    
+}

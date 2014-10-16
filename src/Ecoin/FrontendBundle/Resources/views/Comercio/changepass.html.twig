@@ -1,0 +1,97 @@
+{% extends '::frontend_cia.html.twig' %}
+
+{% block title %}
+    {{ 'Mi cuenta'|trans({},lenguaje) }} - {{ 'Cambiar password'|trans({},lenguaje) }}    
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('comercio_change_pass', { 'id': entity_comercio.id, '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_change_pass', { 'id': entity_comercio.id, '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_change_pass', { 'id': entity_comercio.id, '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_change_pass', { 'id': entity_comercio.id, '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block activelugar %} {% endblock %}
+{% block activepago %} {% endblock %}
+{% block activecuenta %} in {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+     {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+       {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger">
+          <span class="glyphicon glyphicon-remove"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-user"></span>
+        {{ 'Mi cuenta'|trans({},lenguaje) }} / <span class="glyphicon glyphicon-lock"></span>{{ 'Cambiar password'|trans({},lenguaje) }}
+      </div>
+      <div class="panel-body">        
+        <br>
+               
+        <form role='form' action="{{ path('comercio_change_pass', { 'id': entity_comercio.id }) }}" method="post" {{ form_enctype(form) }}>
+
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">            
+            <label>{{ 'Correo electrónico'|trans({},lenguaje) }}</label>    
+            <input type="text" class="form-control" value='{{ entity_comercio.usuario }}' disabled>
+          </div>
+
+           <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">      
+            <label>{{ 'Contraseña'|trans({},lenguaje) }}</label>    
+            {{ form_widget(form.oldPassword, {'attr': {'class': 'form-control'}}) }}            
+          </div>
+
+          <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6"> 
+            {% if form_errors(form.newPassword.first) == '' %}          
+            {% else %} 
+                <div class="alert alert-danger">{{ form_errors(form.newPassword.first) }}</div>   
+            {% endif %}            
+            <label>{{ 'Crear nueva contraseña'|trans({},lenguaje) }}</label>    
+            {{ form_widget(form.newPassword.first, {'attr': {'class': 'form-control'}}) }}
+            <p class="help-block"><small>{{ 'Máximo 10 caracteres'|trans({},lenguaje) }}.</small></p>
+          </div>
+
+          <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">   
+             {% if form_errors(form.newPassword.first) == '' %}          
+            {% else %} 
+                <div class="alert alert-danger">{{ form_errors(form.newPassword.first) }}</div>   
+            {% endif %}          
+            <label>{{ 'Confirmar contraseña'|trans({},lenguaje) }}</label>    
+            {{ form_widget(form.newPassword.second, {'attr': {'class': 'form-control'}}) }}
+            <p class="help-block"><small>{{ 'Máximo 10 caracteres'|trans({},lenguaje) }}.</small></p>
+          </div>
+
+          <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">      
+            <button type="submit" class="col-lg-12 btn btn-success">
+              <span class="glyphicon glyphicon-ok"></span> {{ 'Guardar cambios'|trans({},lenguaje) }}
+            </button>                    
+          </div>
+          <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">                
+            <a href="{{ path('comercio_main', { '_locale': lenguaje }) }}" class="col-lg-12 btn btn-danger">
+              <span class="glyphicon glyphicon-refresh"></span>            
+              {{ 'Cancelar'|trans({},lenguaje) }}
+            </a>              
+          </div>
+
+          {{ form_rest(form) }}   
+        </form>
+        
+      </div>
+    </div>
+  </div>
+        
+{% endblock %}

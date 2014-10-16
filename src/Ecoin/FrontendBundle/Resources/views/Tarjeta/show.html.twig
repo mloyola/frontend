@@ -1,0 +1,107 @@
+{% extends '::frontend_usr.html.twig' %}
+
+{% block title %}    
+    {{ 'Mis medios de pago'|trans({},lenguaje) }} - {{ 'Detalle'|trans({},lenguaje) }}    
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('tarjeta_show', { 'id': entity_tarjeta.id, '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('tarjeta_show', { 'id': entity_tarjeta.id, '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('tarjeta_show', { 'id': entity_tarjeta.id, '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('tarjeta_show', { 'id': entity_tarjeta.id, '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block activelugar %} {% endblock %}
+{% block activepago %} in {% endblock %}
+{% block activecuenta %} {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+     {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success">
+          <span class="glyphicon glyphicon-ok"></span>{{ flashMessage }}
+        </div>
+      {% endfor %}
+
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-credit-card"></span> {{ 'Mis Tarjetas'|trans({},lenguaje) }} - <span class="glyphicon glyphicon-eye-open"></span>{{ 'Detalle'|trans({},lenguaje) }}        
+      </div>
+      <div class="panel-body">    
+      
+        <form role="form">
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">   
+            <label>{{ 'Tarjeta'|trans({},lenguaje) }}</label>
+            <input type="text" class="form-control" value="{{ entity_tarjeta.producto.descripcion }}" disabled>            
+          </div>  
+
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">   
+            <label>{{ 'Numero'|trans({},lenguaje) }}</label>
+            <input type="text" class="form-control" value="{{ entity_tarjeta.numero }}" disabled>                        
+          </div> 
+
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">   
+            <label>{{ 'Vencimiento'|trans({},lenguaje) }}</label>
+            <input type="text" class="form-control" value="{{ entity_tarjeta.expdate | date('m')}} / {{ entity_tarjeta.expdate | date('y')}}" disabled>
+          </div> 
+
+          <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">   
+            <label>{{ 'Security Code'|trans({},lenguaje) }}</label>
+            <input type="text" class="form-control" value="{{ entity_tarjeta.securitycode }}" disabled>                        
+          </div>          
+
+          <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">   
+            <label>{{ 'Nombre del titular'|trans({},lenguaje) }}</label>
+            <input type="text" class="form-control" value="{{ entity_tarjeta.holdername }}" disabled>                        
+          </div>
+
+          <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">   
+            <a href="{{ path('tarjeta') }}" class="btn btn-primary btn-md btn-block" title="{{ 'Regresar'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-th-list"></span>{{ 'Listado'|trans({},lenguaje) }}</a>
+          </div>
+
+          <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">   
+            <a href="{{ path('tarjeta_edit', { 'id': entity_tarjeta.id }) }}" class="btn btn-warning btn-md btn-block" title="{{ 'Editar'|trans({},lenguaje) }}"><span class="glyphicon glyphicon-edit"></span>{{ 'Editar'|trans({},lenguaje) }}</a>
+          </div>
+
+          <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4">               
+            <button class="btn btn-danger btn-md btn-block" data-toggle="modal" data-target="#myModal">
+              <span class="glyphicon glyphicon-remove"></span>{{ 'Eliminar'|trans({},lenguaje) }}
+            </button>              
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-credit-card"></span> {{ 'Mis Tarjetas'|trans({},lenguaje) }} - <span class="glyphicon glyphicon-remove"></span>{{ 'Eliminar'|trans({},lenguaje) }}</h4>
+      </div>
+      <div class="modal-body">
+        <p><label>{{ 'Id'|trans({},lenguaje) }}:</label> {{ entity_tarjeta.id }}</p>
+        <p><label>{{ 'Tarjeta'|trans({},lenguaje) }}:</label> {{ entity_tarjeta.producto.descripcion }}</p>
+        <p><label>{{ 'Numero'|trans({},lenguaje) }}:</label> {{ entity_tarjeta.numero }}</p>                            
+      </div>
+      <div class="modal-footer">
+        {{ form_start(delete_form) }}
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'Cerrar'|trans({},lenguaje) }}</button>     
+        {{ form_widget(delete_form.submit, {'attr': {'class': 'btn btn-danger'}}) }}
+        {{ form_end(delete_form) }}              
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+Ecoin\BackendBundle\Entity\Distrito:
+    type: entity
+    table: distrito
+    repositoryClass: Ecoin\BackendBundle\Entity\DistritoRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+
+    manyToOne:
+        ciudad:
+            targetEntity: Ciudad
+            inversedBy: distritos
+            joinColumn:
+                name: ciudad_id
+                referencedColumnName: id     
+                         
+    lifecycleCallbacks: {  }

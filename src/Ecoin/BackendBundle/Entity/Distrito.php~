@@ -1,0 +1,37 @@
+<?php
+
+namespace Ecoin\BackendBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Distrito
+ */
+class Distrito
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="Ingrese el nombre")  
+     */
+    private $nombre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Ciudad")
+     * @ORM\JoinColumn(name="ciudad_id", referencedColumnName="id")
+     * @Assert\Type("Ecoin\BackendBundle\Entity\Ciudad")
+     * @Assert\NotBlank(message="Seleccione la ciudad")  
+    */
+    public $ciudad;    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\FrontendBundle\Entity\Usuario", mappedBy="distrito")
+     */
+    protected $usuarios;
+
+    
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Paga desde tu móvil de forma fácil y segura</source>
+                <target>Pay in your mobile for easy and safe</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Iniciar sesión</source>
+                <target>Entra</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Idioma</source>
+                <target>Lingua</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Español</source>
+                <target>Spagnolo</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Ingles</source>
+                <target>Inglese</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Italiano</source>
+                <target>Italiano</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Portugués</source>
+                <target>Portoghese</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Recordar mis datos</source>
+                <target>Ricordati di me</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>¿Olvidaste tu contraseña?</source>
+                <target>Hai dimenticato la password?</target>
+            </trans-unit> 
+            <trans-unit id="10">
+                <source>¿Eres nuevo? Regístrate es gratis</source>
+                <target>Sei nuovo? Registrati gratuitamente</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Nombre completo</source>
+                <target>Nome e cognome</target>
+            </trans-unit>
+			<trans-unit id="12">
+                <source>Registrarme</source>
+                <target>Registro</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Paga desde tu móvil</source>
+                <target>Pay your mobile</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>todo en tu móvil</source>
+                <target>tutto nel cellulare</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Descarga Gratis la App</source>
+                <target>Scaricare Gratis App</target>
+            </trans-unit>  
+            <trans-unit id="16">
+                <source>Negocios</source>
+                <target>Azienda</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Registrar Gratis</source>
+                <target>Registrati gratuito</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Acceso para Negocios</source>
+                <target>Accesso per le imprese</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Correo Electrónico</source>
+                <target>E-mail</target>
+            </trans-unit>
+             <trans-unit id="20">
+                <source>Contraseña</source>
+                <target>Password</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

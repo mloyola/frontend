@@ -1,0 +1,54 @@
+<?php
+
+namespace Ecoin\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comerciohor
+ */
+class Comerciohor
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $descripcion;
+
+    /**
+     * @var \DateTime
+     */
+    private $apertura;
+
+    /**
+     * @var \DateTime
+     */
+    private $cierre;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\BackendBundle\Entity\Diasatencion", inversedBy="comerciohrs")
+     * @ORM\JoinTable(name="comerciohors_dias")
+     */
+    private $dias;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\FrontendBundle\Entity\Comercio", inversedBy="comerciohrs")
+    * @ORM\JoinColumn(name="comercio_id", referencedColumnName="id")
+    */
+    protected $comercio;            
+
+    /**
+     * @var \DateTime
+     */
+    private $fchCreate;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchUpdate;
+
+}

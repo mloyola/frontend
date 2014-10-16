@@ -1,0 +1,17 @@
+Ecoin\BackendBundle\Entity\Codresp:
+    type: entity
+    table: codresp
+    repositoryClass: Ecoin\BackendBundle\Entity\CodrespRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        codigo:
+            type: string
+            length: '2'
+        descripcion:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

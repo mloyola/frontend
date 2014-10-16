@@ -1,0 +1,14 @@
+Ecoin\BackendBundle\Entity\Diasatencion:
+    type: entity
+    table: diasatencion
+    repositoryClass: Ecoin\BackendBundle\Entity\DiasatencionRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        descripcion:
+            type: string
+            length: '10'
+    lifecycleCallbacks: {  }

@@ -1,0 +1,63 @@
+{% extends '::frontend_usr.html.twig' %}
+
+{% block title %}
+    {{ 'Mi cuenta'|trans({},lenguaje) }} - {{ 'Notificaciones'|trans({},lenguaje) }}    
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block activelugar %} {% endblock %}
+{% block activepago %} {% endblock %}
+{% block activecuenta %} in {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+  <div class ="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+  
+    <div class="panel panel-default">  
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-user"></span>
+        {{ 'Mi cuenta'|trans({},lenguaje) }} / <span class="glyphicon glyphicon-flash"></span>{{ 'Notificaciones'|trans({},lenguaje) }}
+      </div>
+      <div class="panel-body">        
+        <br>
+        
+        {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-info">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}        
+
+         {% for flashMessage in app.session.flashbag.get('warning') %}
+        <div class="alert alert-warning">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}        
+
+        {% for flashMessage in app.session.flashbag.get('danger') %}
+        <div class="alert alert-danger">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}        
+       
+      </div>
+    </div>
+  </div>
+        
+{% endblock %}

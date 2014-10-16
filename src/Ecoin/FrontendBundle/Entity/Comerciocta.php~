@@ -1,0 +1,59 @@
+<?php
+
+namespace Ecoin\FrontendBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Comerciocta
+ */
+class Comerciocta
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $numero;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Banco", inversedBy="comercioscta")
+    * @ORM\JoinColumn(name="banco_id", referencedColumnName="id")
+    * @Assert\NotBlank(message="Seleccione el banco")  
+    */
+    protected $banco;   
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Tipocta", inversedBy="comercioscta")
+    * @ORM\JoinColumn(name="tipocta_id", referencedColumnName="id")
+    * @Assert\NotBlank(message="Seleccione el tipo de cuenta")  
+    */
+    protected $tipocta;   
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Moneda", inversedBy="comercioscta")
+    * @ORM\JoinColumn(name="moneda_id", referencedColumnName="id")
+    * @Assert\NotBlank(message="Seleccione la moneda")  
+    */
+    protected $moneda;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\FrontendBundle\Entity\Comercio", inversedBy="comercioscta")
+    * @ORM\JoinColumn(name="comercio_id", referencedColumnName="id")
+    */
+    protected $comercio;            
+
+    /**
+     * @var \DateTime
+     */
+    private $fchCreate;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchUpdate;
+
+}

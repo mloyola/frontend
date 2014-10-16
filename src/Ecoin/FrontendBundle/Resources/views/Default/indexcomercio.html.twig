@@ -1,0 +1,67 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}
+    {{ 'Haz crecer tu negocio'|trans({},lenguaje) }}
+{% endblock %}
+
+{% block menu_item %}
+    <li><a class="page-scroll" href="{{ path('frontend_homepage') }}">{{ "Paga tus compras" | trans }}</a></li>
+    <li><a class="page-scroll" href="#vender">{{ "Para Comercios" | trans }}</a></li>                    
+    <li><a class="page-scroll" href="{{ path('frontend_homepage_faqs') }}">{{ "Faqs" | trans }}</a></li>
+    <li><a class="page-scroll" href="{{ path('usuario_login') }}">{{ "Iniciar Sesion" | trans }}</a></li>    
+{% endblock %}
+
+{% block body %}
+	<!-- Header -->
+    <header class="header-comercio">
+        <div class="container">
+            <div class="intro-text">
+               
+                <div class="intro-heading hidden-xs">{{ "Haz crecer tu negocio" | trans }} {{ lenguaje }}</div>                
+                <div class="intro-heading hidden-xs">{{ "Recibe el pago en tu cuenta" | trans }}</div>                                
+
+                <a href="#services" class="page-scroll btn btn-md"><img src="http://localhost/templates/agency/img/googleplay.png"></a>
+                <a href="#services" class="page-scroll btn btn-md"><img src="http://localhost/templates/agency/img/appstore.png"></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Vender Section -->
+    <section id="vender">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{ "Para Comercios" | trans }}</h2>                    
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">{{ "Haz crecer tu negocio" | trans }}</h4>
+                    <p class="text-muted">{{ "Podrás ofrecer a tus clientes una nueva alternativa de pago fácil y seguro" | trans }}.</p>
+                    <a href="#">{{ "Regístrate gratis como Comercio" | trans }}</a>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">{{ "Administra el pago de tus ventas" | trans }}</h4>
+                    <p class="text-muted">{{ "A través de una amigable interfaz podrás administrar en tiempo real el pago de tus ventas" | trans }}.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">{{ "Recibe el pago en tu cuenta" | trans }}</h4>
+                    <p class="text-muted">{{ "Recibe el pago de tus ventas directamente en tu cuenta de banco" | trans }}.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}        

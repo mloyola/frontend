@@ -1,0 +1,35 @@
+Ecoin\FrontendBundle\Entity\Tarjeta:
+    type: entity
+    table: tarjeta
+    repositoryClass: Ecoin\FrontendBundle\Entity\TarjetaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        numero:
+            type: string
+            length: '12'
+        expdate:
+            type: date
+        securitycode:
+            type: string
+            length: '6'
+        holdername:
+            type: string
+            length: '26'
+    manyToOne:        
+        producto:
+            targetEntity: Ecoin\BackendBundle\Entity\Producto
+            inversedBy: tarjetas
+            joinColumn:
+                name: producto_id
+                referencedColumnName: id                
+        usuario:
+            targetEntity: Ecoin\FrontendBundle\Entity\Usuario
+            inversedBy: tarjetas
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id        
+    lifecycleCallbacks: {  }

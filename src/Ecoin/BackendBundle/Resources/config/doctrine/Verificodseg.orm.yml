@@ -1,0 +1,20 @@
+Ecoin\BackendBundle\Entity\Verificodseg:
+    type: entity
+    table: verificodseg
+    repositoryClass: Ecoin\BackendBundle\Entity\VerificodsegRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        codigo:
+            type: string
+            length: '1'
+        descripcorta:
+            type: string
+            length: '150'
+        descripcion:
+            type: string
+            length: '255'
+    lifecycleCallbacks: {  }

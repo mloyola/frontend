@@ -1,0 +1,46 @@
+Ecoin\FrontendBundle\Entity\Comerciocta:
+    type: entity
+    table: comerciocta
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        numero:
+            type: string
+            length: '20'
+
+        fchCreate:
+            type: datetime
+            column: fch_create
+
+        fchUpdate:
+            type: datetime
+            column: fch_update            
+    manyToOne:        
+        comercio:
+            targetEntity: Ecoin\FrontendBundle\Entity\Comercio
+            inversedBy: comercioscta
+            joinColumn:
+                name: comercio_id
+                referencedColumnName: id                
+        banco:
+            targetEntity: Ecoin\BackendBundle\Entity\Banco
+            inversedBy: comercioscta
+            joinColumn:
+                name: banco_id
+                referencedColumnName: id                
+        tipocta:
+            targetEntity: Ecoin\BackendBundle\Entity\Tipocta
+            inversedBy: comercioscta
+            joinColumn:
+                name: tipocta_id
+                referencedColumnName: id                
+        moneda:
+            targetEntity: Ecoin\BackendBundle\Entity\Moneda
+            inversedBy: comercioscta
+            joinColumn:
+                name: moneda_id
+                referencedColumnName: id                        
+    lifecycleCallbacks: {  }

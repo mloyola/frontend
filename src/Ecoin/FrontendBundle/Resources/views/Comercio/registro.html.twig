@@ -1,0 +1,124 @@
+{% extends '::frontend_star.html.twig' %}
+
+{% block title %}
+    {{ 'Registro de negocios'|trans({},lenguaje) }}
+{% endblock %}
+            
+{% block metadesc %}
+Regístrate gratis y ofrece nuevas formas de pago a tus clientes
+{% endblock %}
+
+{% block metaetiq %}
+registro, registro de comercios, empresas
+{% endblock %}            
+
+{% block comboidioma %}
+  <li><a href="{{ path('comercio_registro', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_registro', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_registro', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_registro', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block contenido %} 
+  <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">   
+    
+    <h2>{{ 'Crea una cuenta gratis'|trans({},lenguaje) }}</h2>
+    <h3><span class="glyphicon glyphicon-bookmark"></span> {{ 'Negocio'|trans({},lenguaje) }}</h3>    
+
+    {{ form_start(form, {'attr': {'role': 'form'}}) }}
+      {{ form_errors(form) }}           
+        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">          
+          {% if form_errors(form.usuario.email) == '' %}          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.usuario.email) }}</div>   
+          {% endif %}           
+          <label>{{ 'Correo electrónico'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.usuario.email, {'attr': {'class': 'form-control'}}) }}
+        </div>      
+        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">                    
+          <label>{{ 'Repite tu correo electrónico'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.usuario.confirm, {'attr': {'class': 'form-control'}}) }}
+        </div>  
+
+        <div class="form-group col-xs-12 col-sm-7 col-md-7 col-lg-7">
+          {% if form_errors(form.password) == '' %}          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.password) }}</div>   
+          {% endif %}    
+          <label>{{ 'Crea tu contraseña'|trans({},lenguaje) }}</label>              
+          {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+          <p class="help-block"><small>Máximo 10 caracteres.</small></p>
+        </div> 
+
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          {% if form_errors(form.nombre) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.nombre) }}</div>   
+          {% endif %}          
+          <label>{{ 'Nombre comercial'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.nombre, {'attr': {'class': 'form-control'}}) }}
+          <p class="help-block"><small>Los compradores verán este nombre.</small></p>
+        </div>
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          {% if form_errors(form.razonsocial) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.razonsocial) }}</div>   
+          {% endif %}
+          <label>{{ 'Razón social'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.razonsocial, {'attr': {'class': 'form-control'}}) }}
+          <p class="help-block"><small>Es el nombre legal del negocio.</small></p>
+        </div>
+        
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+           {% if form_errors(form.categoria) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.categoria) }}</div>   
+          {% endif %}
+          <label>{{ 'Categoría'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.categoria, {'attr': {'class': 'form-control'}}) }}          
+        </div>                
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+           {% if form_errors(form.pais) == '' %}
+          
+          {% else %} 
+            <div class="alert alert-danger">{{ form_errors(form.pais) }}</div>   
+          {% endif %}
+          <label>{{ 'País'|trans({},lenguaje) }}</label>    
+          {{ form_widget(form.pais, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        
+
+        <div class="form-group col-xs-11 col-sm-11 col-md-11 col-lg-11">          
+          {{ form_widget(form.marketing) }} {{ 'Quiero recibir novedades y promociones por correo electrónico'|trans({},lenguaje) }}.
+        </div>          
+              
+        <div class="form-group ">      
+          <button type="submit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-primary">{{ 'Registrarme'|trans({},lenguaje) }}</button>
+        </div>
+        
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">   
+          <small>{{ 'Al registrarme, declaro que soy mayor de edad y acepto los Términos y Condiciones y las Políticas de Privacidad'|trans({},lenguaje) }}.</small>       
+        </div>
+        
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">   
+          <a href=""><small>{{ 'Términos y Condiciones'|trans({},lenguaje) }}</small></a>
+        </div>
+
+        <div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
+          <a href=""><small>{{ 'Políticas de Privacidad'|trans({},lenguaje) }}</small></a>            
+        </div>
+        
+    {{ form_end(form) }}
+
+  </div>  
+  
+{% endblock %}
+
+{% block descarga %} {% endblock %}   

@@ -1,0 +1,71 @@
+frontend_homepage:
+    pattern:  /{_locale}
+    defaults: { _controller: FrontendBundle:Default:index,, _locale: es }    
+    requirements:
+        _locale: es|en|it|pt    
+
+frontend_homepage_pe:
+    pattern:  /PE/{_locale}
+    defaults: { _controller: FrontendBundle:Default:index,, _locale: es }    
+    requirements:
+        _locale: es|en|it|pt    
+
+frontend_homepage_ar:
+    pattern:  /AR/{_locale}
+    defaults: { _controller: FrontendBundle:Default:index,, _locale: es }    
+    requirements:
+        _locale: es|en|it|pt
+
+frontend_homepage_comercio:
+    pattern:  /{_locale}/comercio
+    defaults: { _controller: FrontendBundle:Default:indexcomercio,, _locale: es }    
+    requirements:
+        _locale: es|en|it|pt  
+
+frontend_homepage_faqs:
+    pattern:  /{_locale}/faqs
+    defaults: { _controller: FrontendBundle:Default:faqs,, _locale: es }    
+    requirements:
+        _locale: es|en|it|pt  
+
+frontend_homepage_contacto:
+    pattern:  /{_locale}/contacto
+    defaults: { _controller: FrontendBundle:Default:contacto,, _locale: es }    
+    requirements:
+        _locale: es|en|it|pt  
+
+denegado:
+    pattern:  /denegado    
+    defaults: { _controller: FrontendBundle:Default:denied }    
+
+select_ciudades:
+    pattern:  /ciudades
+    defaults: { _controller: "FrontendBundle:Default:ciudades" }
+
+select_distritos:
+    pattern:  /distritos
+    defaults: { _controller: "FrontendBundle:Default:distritos" }
+
+frontend_estatica:
+    pattern:  /{_locale}/{name}
+    defaults: { _controller: FrontendBundle:Default:estatica}
+    requirements:
+        _locale: es|en|it|pt
+    defaults:
+        _locale: es   
+
+frontend_usuario:
+    resource: "@FrontendBundle/Resources/config/routing/usuario.yml"
+    prefix:   /{_locale}/usr
+    requirements:
+        _locale: es|en|it|pt
+    defaults:
+        _locale: es
+
+frontend_comercio:
+    resource: "@FrontendBundle/Resources/config/routing/comercio.yml"
+    prefix:   /{_locale}/cia
+    requirements:
+        _locale: es|en|it|pt
+    defaults:
+        _locale: es

@@ -1,0 +1,197 @@
+<?php
+
+namespace Ecoin\FrontendBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * Comercio
+ */
+
+/**
+ * @ORM\Entity
+ * @UniqueEntity(fields="usuario",message="Actualmente existe un usuario registrado con el correo electrónico ingresado")
+ */
+class Comercio implements UserInterface, \Serializable
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string  
+     * @Assert\Email(message = "El correo electrónico '{{ value }}' ingresado no tiene el formato correcto")
+     * @Assert\NotBlank(message="Ingrese su correo electrónico")          
+     */
+    protected  $usuario;
+
+    /**
+     * @var string   
+     * @Assert\NotBlank(message="Ingrese su contraseña")       
+     */
+    protected  $password;
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="Ingrese el nombre comercial o de la empresa")  
+     */
+    private $nombre; 
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message="Ingrese el nombre de la razón social")  
+     */
+    private $razonsocial;
+
+    /**
+      * @var string
+      * @Assert\Image(maxSize = "200k")
+     */
+    protected $logo;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Categoria", inversedBy="comercios")
+    * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
+    * @Assert\NotBlank(message="Seleccione la categoría")  
+    */
+    protected $categoria;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Pais", inversedBy="comercios")
+    * @ORM\JoinColumn(name="pais_id", referencedColumnName="id")
+    * @Assert\NotBlank(message="Seleccione el país")  
+    */
+    protected $pais;   
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Idioma", inversedBy="comercios")
+    * @ORM\JoinColumn(name="idioma_id", referencedColumnName="id")    
+    */
+    protected $idioma; 
+
+    /**
+     * @ORM\Column(type="string")  
+     */
+    private $ruc;   
+
+    /**
+     * @var string     
+     */
+    private $contacto;   
+
+    /**
+     * @var string     
+     */
+    private $telefono;
+
+    /**
+     * @var string     
+     */
+    private $movil;
+
+    /**
+     * @var \Date 
+     */
+    private $fchNac;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchCreate;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchUpdate;
+
+    /**
+     * @var boolean
+     */
+    private $marketing;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchActive;
+
+    /**
+     * @var string     
+     */
+    private $estado;
+
+    /**
+     * @var string     
+     */
+    private $estadocategorias;
+
+    /**
+     * @var string     
+     */
+    private $estadolocales;
+
+    /**
+     * @var string     
+     */
+    private $estadocuentas;
+
+     /**
+      * @var string
+     */
+    protected $salt;               
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    public function getUsername()
+    {
+        return $this->usuario;        
+    }
+
+    public function serialize()
+    {
+       return serialize($this->getId());
+    }
+ 
+    public function unserialize($data)
+    {
+        $this->id = unserialize($data);
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_NEGO');
+    }
+
+    public  function eraseCredentials()
+    {
+        //Aqui se borran las cokkies y todo lo que se requiera
+        //cuando el usuario se haya desauntenticado
+        return false;
+    }
+
+    public function equals(userInterface $user)
+    {
+        return  $this->getUsername()== $user->getUsername();
+    }    
+        
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+        
+}

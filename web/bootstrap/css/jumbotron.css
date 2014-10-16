@@ -1,0 +1,139 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+
+  margin-top:50px;
+}
+
+.input-group-addon.black
+{
+  color: #000000;
+}
+.label.appfree {
+  background-color: #9526C2;
+  background-image: linear-gradient(to bottom, #8026C2, #B426C2);
+  background-repeat: repeat-x;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  font-size: 30px;
+  font-weight: bold;
+  white-space: nowrap;    
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;  
+  text-shadow: 3px 3px 3px #000;  
+}
+
+.btn-login {
+  /*
+  color: #ffffff;
+  background-color: #bdae5c;
+  border-color: #b2a454;*/
+
+  background-color: #bdae5c;
+  background-image: linear-gradient(to bottom, #b2a454, #b2a454);
+  background-repeat: repeat-x;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+  color: #ffffff;
+  background-color: #877c36;
+  border-color: #7a6e1d;
+}
+
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+  background-image: none;
+}
+
+.btn-login.disabled,
+.btn-login[disabled],
+fieldset[disabled] .btn-login,
+.btn-login.disabled:hover,
+.btn-login[disabled]:hover,
+fieldset[disabled] .btn-login:hover,
+.btn-login.disabled:focus,
+.btn-login[disabled]:focus,
+fieldset[disabled] .btn-login:focus,
+.btn-login.disabled:active,
+.btn-login[disabled]:active,
+fieldset[disabled] .btn-login:active,
+.btn-login.disabled.active,
+.btn-login[disabled].active,
+fieldset[disabled] .btn-login.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.btn-register {
+  /*
+  color: #ffffff;
+  background-color: #bdae5c;
+  border-color: #b2a454;
+  */
+
+  background-color: #9526C2;
+  background-image: linear-gradient(to bottom, #8026C2, #B426C2);
+  background-repeat: repeat-x;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-register:hover,
+.btn-register:focus,
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+   background-color: #9526C2;
+  background-image: linear-gradient(to bottom, #8026C2, #B426C2);
+  background-repeat: repeat-x;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+  /*
+  color: #ffffff;
+  background-color: #877c36;
+  border-color: #7a6e1d;
+  */
+}
+
+.btn-register:active,
+.btn-register.active,
+.open .dropdown-toggle.btn-register {
+  background-image: none;
+}
+
+.btn-register.disabled,
+.btn-register[disabled],
+fieldset[disabled] .btn-register,
+.btn-register.disabled:hover,
+.btn-register[disabled]:hover,
+fieldset[disabled] .btn-register:hover,
+.btn-register.disabled:focus,
+.btn-register[disabled]:focus,
+fieldset[disabled] .btn-register:focus,
+.btn-register.disabled:active,
+.btn-register[disabled]:active,
+fieldset[disabled] .btn-register:active,
+.btn-register.disabled.active,
+.btn-register[disabled].active,
+fieldset[disabled] .btn-register.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }

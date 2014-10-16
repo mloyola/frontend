@@ -1,0 +1,55 @@
+<?php
+
+namespace Ecoin\BackendBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pais
+ */
+class Pais
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string     
+     * @Assert\NotBlank(message="Ingrese el nombre")  
+     */
+    private $nombre;
+
+    /**
+     * @var string     
+     * @Assert\NotBlank(message="Ingrese el código")
+     */
+    private $codigo;
+
+    /**
+     * @var string     
+     * @Assert\NotBlank(message="Ingrese el identificador")
+     */
+    private $identificador;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\BackendBundle\Entity\Ciudad", mappedBy="pais")
+     */
+    protected $ciudades;   
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\BackendBundle\Entity\Subcategoria", mappedBy="paises")
+    */
+    private $subcategorias;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\BackendBundle\Entity\Producto", mappedBy="paises")
+    */
+    private $productos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\BackendBundle\Entity\Moneda", mappedBy="paises")
+    */
+    private $monedas;
+    
+}

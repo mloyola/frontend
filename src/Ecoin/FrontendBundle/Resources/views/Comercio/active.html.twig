@@ -1,0 +1,57 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}
+    {{ 'Felicitaciones has activado tu cuenta satisfactoriamente'|trans({},lenguaje) }}
+{% endblock %}
+            
+{% block metadesc %}
+
+{% endblock %}
+
+{% block metaetiq %}
+
+{% endblock %}            
+
+{% block comboidioma %}
+  <li><a href="{{ path('usuario_show', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_show', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_show', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_show', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>
+  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block contenido %}
+    <br>
+    <br>
+
+    <div class="col-lg-12 text-center">   
+      <h1>{{ '¡Felicitaciones!'|trans({},lenguaje) }}</h1>
+      <h1>{{ 'has activado tu cuenta satisfactoriamente'|trans({},lenguaje) }}</h1>      
+    </div>
+
+    <br>
+        
+    <div class="col-lg-3">         
+      &nbsp;
+    </div>
+
+    <div class="col-lg-6 text-center">               
+      <a href="" class="btn btn-login btn-lg">{{ 'Ingresar'|trans({},lenguaje) }}</a>        
+      
+      <h2>Invita a tus amigos</h2>
+
+      <a href="" class="btn btn-facebook"><i class="icon-facebook"></i> | Connect with Facebook</a>    
+    
+    </div>
+
+    <div class="col-lg-3">         
+      &nbsp;
+    </div>  
+
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+<?php
+
+namespace Ecoin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Metodo
+ */
+class Metodo
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $metodo;
+
+    /**
+     * @var string
+     */
+    private $descripcion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ecoin\BackendBundle\Entity\Procesador", mappedBy="metodos")
+    */
+    private $procesadores;
+    
+}

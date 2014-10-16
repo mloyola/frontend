@@ -1,0 +1,33 @@
+<?php
+
+namespace Ecoin\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Codigoactivauser
+ */
+class Codigoactivauser
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string     
+     */
+    private $codigo;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\FrontendBundle\Entity\Usuario", inversedBy="codigoactivausers")
+    * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+    */
+    protected $usuario;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchCreate;
+
+}

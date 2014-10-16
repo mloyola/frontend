@@ -1,0 +1,36 @@
+Ecoin\BackendBundle\Entity\Subcategoria:
+    type: entity
+    table: subcategoria
+    repositoryClass: Ecoin\BackendBundle\Entity\SubcategoriaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        categoria:
+            targetEntity: Categoria
+            inversedBy: subcategorias
+            joinColumn:
+                name: categoria_id
+                referencedColumnName: id  
+        opcionsubcategoria:
+            targetEntity: Opcionsubcategoria
+            inversedBy: subcategorias
+            joinColumn:
+                name: opcionsubcategoria_id
+                referencedColumnName: id                  
+    manyToMany:
+        paises:
+            targetEntity: Pais
+            inversedBy: subcategorias
+            joinTable:
+                name: subcategorias_paises
+                joinColumns:
+                    subcategoria_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    pais_id:
+                        referencedColumnName: id        
+    lifecycleCallbacks: {  }

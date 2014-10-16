@@ -1,0 +1,85 @@
+Ecoin\FrontendBundle\Entity\Comercio:
+    type: entity
+    table: comercio
+    repositoryClass: Ecoin\FrontendBundle\Entity\ComercioRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        usuario:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255            
+        nombre:
+            type: string
+            length: 100   
+        razonsocial:
+            type: string
+            length: 100        
+        logo:
+            type: string
+            length: 255     
+        ruc:
+            type: string
+            length: 20
+        contacto:
+            type: string
+            length: 50
+        telefono:
+            type: string
+            length: 20
+            nullable: TRUE        
+        movil:
+            type: string
+            length: 20    
+            nullable: TRUE        
+        marketing:
+            type: boolean    
+        fchCreate:
+            type: datetime
+            column: fch_create
+        fchUpdate:
+            type: datetime
+            column: fch_update     
+        fchActive:
+            type: datetime
+            column: fch_active         
+        estado:
+            type: string
+            length: 1    
+        estadocategorias:
+            type: string
+            length: 1
+        estadolocales:
+            type: string
+            length: 1
+        estadocuentas:
+            type: string
+            length: 1            
+        salt:
+            type: string
+            length: 255
+    manyToOne:
+        pais:
+            targetEntity: Ecoin\BackendBundle\Entity\Pais
+            inversedBy: comercios
+            joinColumn:
+                name: pais_id
+                referencedColumnName: id             
+        categoria:
+            targetEntity: Ecoin\BackendBundle\Entity\Categoria
+            inversedBy: comercios
+            joinColumn:
+                name: categoria_id
+                referencedColumnName: id                                    
+        idioma:
+            targetEntity: Ecoin\BackendBundle\Entity\Idioma
+            inversedBy: comercios
+            joinColumn:
+                name: idioma_id
+                referencedColumnName: id                            
+    lifecycleCallbacks: {  }

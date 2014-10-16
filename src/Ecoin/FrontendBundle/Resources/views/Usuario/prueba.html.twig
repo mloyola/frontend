@@ -1,0 +1,26 @@
+{% extends '::frontend_usr.html.twig' %}
+
+{% block title %}
+    {{ 'Mi cuenta'|trans({},lenguaje) }} - {{ 'Notificaciones'|trans({},lenguaje) }}    
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('usuario_notificacion', { 'id': entity_usuario.id, '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block activelugar %} {% endblock %}
+{% block activepago %} {% endblock %}
+{% block activecuenta %} in {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+  
+        
+{% endblock %}

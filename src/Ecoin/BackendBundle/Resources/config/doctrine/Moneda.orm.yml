@@ -1,0 +1,36 @@
+Ecoin\BackendBundle\Entity\Moneda:
+    type: entity
+    table: moneda
+    repositoryClass: Ecoin\BackendBundle\Entity\MonedaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        codigo:
+            type: string
+            length: '3'
+        descripcion:
+            type: string
+            length: 255
+        sigla:
+            type: string
+            length: '5'    
+    oneToMany:
+        procesadores:
+            targetEntity: Procesador
+            mappedBy: monedas     
+    manyToMany:
+        paises:
+            targetEntity: Pais
+            inversedBy: monedas
+            joinTable:
+                name: monedas_paises
+                joinColumns:
+                    moneda_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    pais_id:
+                        referencedColumnName: id        
+    lifecycleCallbacks: {  }

@@ -1,0 +1,29 @@
+{% extends '::frontend_cia.html.twig' %}
+
+{% block title %}
+    {{ 'Bienvenido'|trans({},lenguaje) }}
+{% endblock %}              
+
+{% block comboidioma %}
+  <li><a href="{{ path('comercio_main', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_main', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_main', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+  <li><a href="{{ path('comercio_main', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>  
+{% endblock %}  
+
+{% block jumbotron %}
+
+{% endblock %}      
+
+{% block activelugar %} in {% endblock %}
+{% block activepago %} {% endblock %}
+{% block activecuenta %} {% endblock %}
+{% block activerepo %} {% endblock %}
+
+{% block contenido %}
+    
+    <div class="well">
+      <h1>{{ 'Ecoin tu medio de pago fácil y seguro'|trans({},lenguaje) }}</h1>                
+    </div>
+
+{% endblock %}

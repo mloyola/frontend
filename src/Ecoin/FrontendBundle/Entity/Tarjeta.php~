@@ -1,0 +1,50 @@
+<?php
+
+namespace Ecoin\FrontendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Tarjeta
+ */
+class Tarjeta
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $numero;
+
+    /**
+     * @var date
+     */
+    private $expdate;
+
+    /**
+     * @var string
+     */
+    private $securitycode;
+
+    /**
+     * @var string
+     */
+    private $holdername;
+         
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Producto", inversedBy="tarjetas")
+    * @ORM\JoinColumn(name="producto_id", referencedColumnName="id")
+    */
+    protected $producto;    
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\FrontendBundle\Entity\Usuario", inversedBy="tarjetas")
+    * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+    */
+    protected $usuario;            
+
+}

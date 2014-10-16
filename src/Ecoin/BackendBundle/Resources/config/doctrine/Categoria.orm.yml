@@ -1,0 +1,15 @@
+Ecoin\BackendBundle\Entity\Categoria:
+    type: entity
+    table: categoria
+    repositoryClass: Ecoin\BackendBundle\Entity\CategoriaRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+            unique: true       
+    lifecycleCallbacks: {  }

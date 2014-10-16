@@ -1,0 +1,14 @@
+Ecoin\BackendBundle\Entity\Tipoprod:
+    type: entity
+    table: tipoprod
+    repositoryClass: Ecoin\BackendBundle\Entity\TipoprodRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        descripcion:
+            type: string
+            length: '10'
+    lifecycleCallbacks: {  }

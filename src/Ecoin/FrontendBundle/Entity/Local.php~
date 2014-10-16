@@ -1,0 +1,125 @@
+<?php
+
+namespace Ecoin\FrontendBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Local
+ */
+class Local
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * Image path
+     *
+     * @var string
+     *
+     * @Assert\File(
+     *     maxSize = "1M",     
+     *     maxSizeMessage = "The maxmimum allowed file size is 1MB.",
+     *     mimeTypesMessage = "Only the filetypes image are allowed."
+     * )     
+     */
+    protected $imagen;
+
+    /**
+     * @var string
+     */
+    private $descripcion;
+
+    /**
+     * @var string
+     */
+    private $telefono;
+
+    /**
+     * @var string
+     */
+    private $email;    
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Via", inversedBy="locales")
+    * @ORM\JoinColumn(name="via_id", referencedColumnName="id")
+    * @Assert\NotBlank(message="Seleccione la vía")  
+    */
+    protected $via;   
+
+    /**
+     * @var string
+     */
+    private $nombrevia;
+
+    /**
+     * @var string
+     */
+    private $numero;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Interior", inversedBy="locales")
+    * @ORM\JoinColumn(name="interior_id", referencedColumnName="id")
+    * @Assert\NotBlank(message="Seleccione el banco")  
+    */
+    protected $interior;   
+
+    /**
+     * @var string
+     */
+    private $numinterior;
+
+    /**
+     * @var string
+     */
+    private $referencia;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Ecoin\FrontendBundle\Entity\Comercio", inversedBy="locales")
+    * @ORM\JoinColumn(name="comercio_id", referencedColumnName="id")
+    */
+    protected $comercio;            
+
+    /**
+     * @var \DateTime
+     */
+    private $fchCreate;
+
+    /**
+     * @var \DateTime
+     */
+    private $fchUpdate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Ciudad")
+     * @ORM\JoinColumn(name="ciudad_id", referencedColumnName="id")
+     * @Assert\Type("Ecoin\BackendBundle\Entity\Ciudad")
+     * @Assert\NotBlank(message="Seleccione la ciudad")  
+    */
+    public $ciudad;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecoin\BackendBundle\Entity\Distrito")
+     * @ORM\JoinColumn(name="distrito_id", referencedColumnName="id")
+     * @Assert\Type("Ecoin\BackendBundle\Entity\Distrito")
+     * @Assert\NotBlank(message="Seleccione el distrito")  
+    */
+    public $distrito;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\FrontendBundle\Entity\Comerciohor", inversedBy="horarios")
+     * @ORM\JoinTable(name="locales_horarios")
+     */
+    private $horarios;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecoin\FrontendBundle\Entity\Subcategoria", inversedBy="locales")
+     * @ORM\JoinTable(name="locales_subcategorias")
+     */
+    private $subcategorias;
+          
+}

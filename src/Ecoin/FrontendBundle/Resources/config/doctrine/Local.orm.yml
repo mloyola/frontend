@@ -1,0 +1,100 @@
+Ecoin\FrontendBundle\Entity\Local:
+    type: entity
+    table: local
+    repositoryClass: Ecoin\FrontendBundle\Entity\LocalRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        imagen:
+            type: string
+            length: '255'  
+            nullable: true      
+        descripcion:
+            type: string
+            length: '50'
+        telefono:
+            type: string
+            length: '20'
+            nullable: true    
+        email:
+            type: string
+            length: '100'
+            nullable: true            
+        nombrevia:
+            type: string
+            length: '100'
+        numero:
+            type: string
+            length: '6'
+        numinterior:
+            type: string
+            length: '6'
+            nullable: true            
+        referencia:
+            type: string
+            length: '100'  
+            nullable: true          
+        fchCreate:
+            type: datetime
+            column: fch_create
+        fchUpdate:
+            type: datetime
+            column: fch_update  
+    manyToOne:                             
+        ciudad:
+            targetEntity: Ecoin\BackendBundle\Entity\Ciudad
+            inversedBy: locales
+            joinColumn:
+                name: ciudad_id
+                referencedColumnName: id                                    
+        distrito:
+            targetEntity: Ecoin\BackendBundle\Entity\Distrito
+            inversedBy: locales
+            joinColumn:
+                name: distrito_id
+                referencedColumnName: id                
+        comercio:
+            targetEntity: Ecoin\FrontendBundle\Entity\Comercio
+            inversedBy: locales
+            joinColumn:
+                name: comercio_id
+                referencedColumnName: id                       
+        via:
+            targetEntity: Ecoin\BackendBundle\Entity\Via
+            inversedBy: locales
+            joinColumn:
+                name: via_id
+                referencedColumnName: id          
+        interior:
+            targetEntity: Ecoin\BackendBundle\Entity\Interior
+            inversedBy: locales
+            joinColumn:
+                name: interior_id
+                referencedColumnName: id 
+    manyToMany:
+        horarios:
+            targetEntity: Ecoin\FrontendBundle\Entity\Comerciohor
+            inversedBy: horarios
+            joinTable:
+                name: locales_horarios
+                joinColumns:
+                    local_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    comerciohor_id:
+                        referencedColumnName: id                                      
+        subcategorias:
+            targetEntity: Ecoin\BackendBundle\Entity\Subcategoria
+            inversedBy: locales
+            joinTable:
+                name: locales_subcategorias
+                joinColumns:
+                    local_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    subcategoria_id:
+                        referencedColumnName: id                                                      
+    lifecycleCallbacks: {  }

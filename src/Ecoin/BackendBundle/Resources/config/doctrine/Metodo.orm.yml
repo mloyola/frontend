@@ -1,0 +1,21 @@
+Ecoin\BackendBundle\Entity\Metodo:
+    type: entity
+    table: metodo
+    repositoryClass: Ecoin\BackendBundle\Entity\MetodoRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        metodo:
+            type: string
+            length: 2    
+        descripcion:            
+            type: string
+            length: 50    
+    oneToMany:
+        procesadores:
+            targetEntity: Procesador
+            mappedBy: metodos
+    lifecycleCallbacks: {  }

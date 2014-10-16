@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}        
+    <link href="{{ asset(global.directorio_css ~ "bootstrap.css")}}" rel="stylesheet">
+    <link href="{{ asset(global.directorio_css ~ "jumbotron.css")}}" rel="stylesheet">     
+{% endblock %}
+
+{% block javascripts %}    
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="{{ asset(global.directorio_js ~ "bootstrap.min.js")}}"></script>       
+{% endblock %}
+
+{% block menu %}
+  {#<div class="hidden-lg">#}
+  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img class="img-responsive" src="{{ asset(global.directorio_img ~ "logo.png")}}" alt="" ></a>          
+        </div>
+        <div class="navbar-collapse collapse">          
+          <form class="navbar-form navbar-right">
+            <ul class="nav navbar-nav">            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'Idioma'|trans({},lenguaje) }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ path('frontend_homepage', { '_locale': 'es' }) }}">{{ 'Español'|trans({},lenguaje) }}</a></li>
+                <li><a href="{{ path('frontend_homepage', { '_locale': 'en' }) }}">{{ 'Ingles'|trans({},lenguaje) }}</a></li>
+                <li><a href="{{ path('frontend_homepage', { '_locale': 'pt' }) }}">{{ 'Portugués'|trans({},lenguaje) }}</a></li>
+                <li><a href="{{ path('frontend_homepage', { '_locale': 'it' }) }}">{{ 'Italiano'|trans({},lenguaje) }}</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    {#</div>#}
+{% endblock %}        
+
+{% block body %}
+        
+    {% block jumbotron %}{% endblock %}      
+    
+    <hr>
+        
+    <div class="container">    
+      {% block contenido %}{% endblock %}      
+    </div>
+
+    <hr>
+      
+    <footer>  
+      <hr>          
+      <div itemscope itemtype="http://schema.org/Organization">        
+        <span itemprop="name"><strong>{{ global.name_web }}</strong></span> &copy; Company 2013<br>  
+        <span itemprop="description">{{ 'Busca y encuentra todo en tu móvil'|trans({},lenguaje) }}</span><br>              
+        <span class="glyphicon glyphicon-envelope"></span> <b>E-mail:</b>
+        <a href="mailto:administracion@nukari.com.pe"><span itemprop="email">administracion@nukari.com.pe</span></a> <br>
+        <span class="glyphicon glyphicon-home"></span> <b>Web:</b>         
+        <a itemprop="url" href="#">www.waicy.com</a>
+      </div>      
+    </footer>
+
+  </div><!--/.container-->
+{% endblock %}
