@@ -83,7 +83,8 @@ class DefaultController extends Controller
         $session->set('idioma', $idioma);
         $idioma = $session->get('idioma');
         // set the user locale
-        $session->setLocale($idioma);
+        //$session->setLocale($idioma);
+        
 
         return $this->redirect($this->generateUrl('frontend_homepage', array('_locale' => $idioma)));              
 
